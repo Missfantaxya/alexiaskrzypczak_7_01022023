@@ -12,18 +12,32 @@
   
   <!--  <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"> -->
 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
   <header class="app__header">
     <div class="header__containerTitle">
-      <img class="header__logo" source="" alt=""/>
-      <h1 class="header__title">Titre</h1>
+      <img 
+      class="header__logo" 
+      src="assets/logo.svg" 
+      alt="logo"/>
+      <h1 class="header__title">Les petits plats</h1>
     </div>
     <div class="header__containerSearch">
       <input class="header__searchInput" type="search" name="recipes" id="recipes" placeholder="Rechercher une recette"></input>
-      <label class="header__searchLabel" for="recipes">svg d'une loupe</label>
+      <label class="header__searchLabel" for="recipes">
+        <button type="submit"> 
+          <img 
+          class="header__logo" 
+          src="assets/research.svg" 
+          alt="logo"/>
+        </button>
+      </label>
     </div>
     <div class="header__containerTag">
       <ul class="header__tagList">

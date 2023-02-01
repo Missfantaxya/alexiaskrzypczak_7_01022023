@@ -1,3 +1,15 @@
+body{
+  font-family: 'Lato', sans-serif;
+}
 .header__title{
+  font-family: "DM sans";
   color: #D04F4F;
+}
+
+.header__logo{
+  width: 50.8px;
+}
+
+.recipe__ingredientsList{
+  font-family: 'Roboto', sans-serif;
 }
