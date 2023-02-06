@@ -1,3 +1,8 @@
+*, *::before, *::after {
+  padding :0;
+  box-sizing: border-box;
+}
+
 body{
   font-family: 'Lato', sans-serif;
   margin: 0 100px;
