@@ -1,0 +1,70 @@
+.sort__list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sort__item{
+  margin-right: 20px;
+  height: 69px;
+  min-width: 170px;
+  /* color: #FFFFFF; */
+  background-color: #E7E7E7;
+  padding: 23px 18px 24px 15px;
+  border-radius: 5px;
+}
+
+.sort__item--close{
+  width: 170px;
+}
+
+.sort__item--open{
+  min-width: 170px;
+  width: max-content;
+}
+
+.sort__item--ingredients{
+  background-color: #3282F7;
+}
+
+.sort__item--appliances{
+  background-color: #68D9A4;
+}
+
+.sort__item--tools{
+  background-color: #ED6454;
+}
+
+.sort__contenairButton{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort__contenairButton>button{
+  color: #FFFFFF;
+  font-size: 18px;
+}
+
+/* FIXME c'est une solution non accessible cf A11y wai-aria */
+.sort__field{
+  display :none;
+}
+
+/* FIXME c'est une solution non accessible cf A11y wai-aria */
+.sort__label{
+  display: none;
+}
+
+/* FIXME c'est une solution non accessible cf A11y wai-aria */
+.sort__select{
+  display: none;
+  border:none;
+  color: #FFFFFF;
+  background-color: #3282F7;
+}
+
+.sort__arrow{
+  width: 16px;
+}

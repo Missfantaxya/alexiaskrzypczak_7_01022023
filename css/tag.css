@@ -1,0 +1,30 @@
+.tag__list{
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.tag__item{
+  min-width: 100px;
+  height: 37px;
+  padding: 8px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3282F7;
+  border-radius: 5px;
+}
+
+.tag__button{
+  height: 20px;
+  margin-right: 2px;
+  margin-left: 13px;
+}
+
+.tag__picture{
+  width: 20px;
+}

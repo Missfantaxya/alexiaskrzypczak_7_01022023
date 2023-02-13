@@ -1,3 +1,6 @@
+@import 'header.css';
+@import 'main.css';
+
 *, *::before, *::after {
   padding :0;
   box-sizing: border-box;

@@ -17,10 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/index.css"> 
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
   <header class="app__header">
@@ -31,6 +28,7 @@
       alt="logo">
       <h1 class="header__title">Les petits plats</h1>
     </div>
+    <!-- TODO voir pour rendre la liste des tri dynamique -->
     <form class="header__containerSearch">
       <input 
       class="search__input" 
@@ -57,8 +55,7 @@
         </li>
       </ul>
     </div>
-    <!-- collapse qui se déroule sur un input text avec liste de tous les
-ingrédients et qui diminue selon se qui est tapé -->
+    <!-- TODO collapse qui se déroule sur un input text avec liste de tous les  ingrédients et qui diminue selon se qui est tapé -->
     <div class="header__containerSort">
       <ul class="sort__list">
         <li class="sort__item sort__item--open sort__item--ingredients">
@@ -71,7 +68,7 @@ ingrédients et qui diminue selon se qui est tapé -->
                 src="assets/arrow-down.svg" alt="arrow">
               </button>
             </div>
-            <fieldset>
+            <fieldset class="sort__field">
               <label class="sort__label"for="sort__inputText">
                 Rechercher un ingrédient
               </label>
@@ -80,6 +77,7 @@ ingrédients et qui diminue selon se qui est tapé -->
               id="sort__inputText"
               name="sort__inputText">
             </fieldset>
+            <!-- ? est ce que j'utilise le select car moins de facilités sur la mise en page -->
             <div>
               <label class="sort__label"
               for="ingredients"> 
@@ -92,8 +90,8 @@ ingrédients et qui diminue selon se qui est tapé -->
                 <option value="">
                   Rechercher un ingrédient
                 </option>
-                <option value="coco">
-                  coco
+                <option value="valeur">
+                  valeur
                 </option>
               </select> 
             </div>
@@ -114,19 +112,32 @@ ingrédients et qui diminue selon se qui est tapé -->
         </li>
       </ul>
     </div>
-    <!-- Mettre chaque recette dans un select qui ne fait rien -->
+    <!-- TODO voir pour placer chaque recette dans un <select> qui ne fait rien -->
       <ul class="recipes__list">
         <li class="recipes__item">
             <div class="recipe__containerPicture">
             </div>
             <div class="recipe__titleContainer">
               <div class="recipe__content">
-                <h3 class="recipe__title">Titre de la recette</h3>
-                <p class="recipe__timing">Temp de la recette</p>
+                <h3 class="recipe__title">
+                  Titre de la recette
+                </h3>
+                <div class="recipe__time">
+                  <img class="recipe__clock"
+                src="assets/clock.svg" alt="clock">
+                  <p class="recipe__duration">
+                    X min
+                  </p>
+                </div >
               </div>
               <div class="recipe__detailsContainer">
                 <ul class="recipe__ingredientsList">
-                  <li class="recipe__ingredientsItem">ingrédients...</li>
+                  <li class="recipe__ingredientsItem">
+                    <p class="recipe__ingredient">
+                      ingrédients:&nbsp;
+                    </p>
+                    <p class="recipe__quantity">quantité</p>
+                  </li>
                 </ul>
                 <p class="recipe__process">procédure de la recette</p>
               </div>
@@ -134,8 +145,5 @@ ingrédients et qui diminue selon se qui est tapé -->
         </li>
       </ul>
   </main>
-  <footer class="app__footer">
-    <p class="footer__content">Footer absent de la maquette</p>
-  </footer>
 </body>
 </html>
