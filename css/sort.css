@@ -35,14 +35,12 @@
   background-color: #ED6454;
 }
 
-.sort__contenairButton{
+.sort__button{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-}
-
-.sort__contenairButton>button{
+  align-items: baseline;
+  width: 100%;
   color: #FFFFFF;
   font-size: 18px;
 }
@@ -53,12 +51,7 @@
 }
 
 /* FIXME c'est une solution non accessible cf A11y wai-aria */
-.sort__label{
-  display: none;
-}
-
-/* FIXME c'est une solution non accessible cf A11y wai-aria */
-.sort__select{
+.sort__choice {
   display: none;
   border:none;
   color: #FFFFFF;

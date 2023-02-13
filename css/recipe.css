@@ -1,3 +1,11 @@
+.recipe__card{
+  width: 380px;
+  height: 364px;
+  background-color: #E7E7E7;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
 .recipe__containerPicture{
   height: 178px;
   background-color: #C7BEBE;

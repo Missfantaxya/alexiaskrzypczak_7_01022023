@@ -28,7 +28,6 @@
       alt="logo">
       <h1 class="header__title">Les petits plats</h1>
     </div>
-    <!-- TODO voir pour rendre la liste des tri dynamique -->
     <form class="header__containerSearch">
       <input 
       class="search__input" 
@@ -47,74 +46,102 @@
   </header>
   <main class="app__main">
     <div class="header__containerTag">
-      <ul class="tag__list">
-        <li class="tag__item">Tag
-          <button class="tag__button" type="button">
+      <ul class="tag__list tag__list--ingredients">
+        <li class="tag__item tag__item--ingredients">Tag
+          <button class="tag__button tag__button--ingredients" type="button">
+            <img class="tag__picture" src="assets/cross.svg" alt="cross">
+          </button>
+        </li>
+      </ul>
+      <ul class="tag__list tag__list--appliances">
+        <li class="tag__item tag__item--appliances">Tag
+          <button class="tag__button tag__button--appliances" type="button">
+            <img class="tag__picture" src="assets/cross.svg" alt="cross">
+          </button>
+        </li>
+      </ul>
+      <ul class="tag__list tag__list--tools">
+        <li class="tag__item tag__item--tools">Tag
+          <button class="tag__button tag__button--tools" type="button">
             <img class="tag__picture" src="assets/cross.svg" alt="cross">
           </button>
         </li>
       </ul>
     </div>
-    <!-- TODO collapse qui se déroule sur un input text avec liste de tous les  ingrédients et qui diminue selon se qui est tapé -->
+    <!-- TODO collapse qui se déroule sur un input text avec liste de tous les
+    ingrédients et qui diminue selon se qui est tapé -->
     <div class="header__containerSort">
       <ul class="sort__list">
         <li class="sort__item sort__item--open sort__item--ingredients">
-          <form class="sort__form">
-            <div class="sort__contenairButton">
-              <button class="sort__inputButton sort__inputButton--ingredients"
-              type=button>Ingrédients</button>
-              <button class="sort__selctButton sort__selectButton--ingredients" type="button">
+          <form class="sort__form sort__form--ingredients">
+            <button class="sort__button" type=button>
+              Ingrédients
                 <img class="sort__arrow sort__arrow--ingredients"
                 src="assets/arrow-down.svg" alt="arrow">
-              </button>
-            </div>
-            <fieldset class="sort__field">
-              <label class="sort__label"for="sort__inputText">
+            </button>
+            <fieldset class="sort__field sort__field--ingredients">
+              <label class="sort__label"for="sort__inputText--ingredients">
                 Rechercher un ingrédient
               </label>
               <input 
-              type="search"
-              id="sort__inputText"
-              name="sort__inputText">
+              type="text"
+              id="sort__inputText--ingredients"
+              name="sort__inputText--ingredients">
             </fieldset>
-            <!-- ? est ce que j'utilise le select car moins de facilités sur la mise en page -->
-            <div>
-              <label class="sort__label"
-              for="ingredients"> 
-                Rechercher un ingrédient
-              </label>
-              <select
-              class="sort__select sort__select--ingredients"
-              name="ingredients"
-              id="ingredients">
-                <option value="">
-                  Rechercher un ingrédient
-                </option>
-                <option value="valeur">
-                  valeur
-                </option>
-              </select> 
-            </div>
+              <div class="sort__choice sort__choice--ingredients">
+                <p> valeur </p>
+                <p> valeur </p>
+              </div> 
           </form>
         </li>
         <li class="sort__item sort__item--appliances">
-          <button class="sort__button
-          sort__button--appliances" type="button">Appareils
-            <img class="sort__picture sort__arrow--ingredients" src="assets/arrow-down.svg" alt="arrow">
-        </button>
+          <form class="sort__form sort__form--appliances">
+            <button class="sort__button
+            sort__button--appliances" type="button">
+            Appareils
+              <img class="sort__picture sort__arrow--ingredients" src="assets/arrow-down.svg" alt="arrow">
+          </button>
+          <fieldset class="sort__field sort__field--appliances">
+              <label class="sort__label"for="sort__inputText--appliances">
+                Rechercher un appareil
+              </label>
+              <input 
+              type="search"
+              id="sort__inputText--appliances"
+              name="sort__inputText--appliances">
+            </fieldset>
+              <div class="sort__choice sort__choice--ingredients">
+                <p> valeur </p>
+                <p> valeur </p>
+              </div> 
+          </form>
         </li>
         <li class="sort__item sort__item--tools">
-          <button class="sort__button sort__button--tools"
-          type="button">Ustensiles
-            <img class="sort__picture sort__arrow--ingredients"
-            src="assets/arrow-down.svg" alt="arrow">
-          </button>
+          <form class="sort__form sort__form--tools">
+            <button class="sort__button sort__button--tools"
+            type="button">Ustensiles
+              <img class="sort__picture sort__arrow--ingredients"
+              src="assets/arrow-down.svg" alt="arrow">
+            </button>
+            <fieldset class="sort__field sort__field--tools">
+              <label class="sort__label"for="sort__inputText--tools">
+                Rechercher un outils
+              </label>
+              <input 
+              type="search"
+              id="sort__inputText--tools"
+              name="sort__inputText--toolss">
+            </fieldset>
+              <div class="sort__choice sort__choice--ingredients">
+                <p> valeur </p>
+                <p> valeur </p>
+              </div> 
+          </form>
         </li>
       </ul>
     </div>
-    <!-- TODO voir pour placer chaque recette dans un <select> qui ne fait rien -->
       <ul class="recipes__list">
-        <li class="recipes__item">
+        <li class="recipe__card">
             <div class="recipe__containerPicture">
             </div>
             <div class="recipe__titleContainer">
@@ -145,5 +172,9 @@
         </li>
       </ul>
   </main>
+  <script src="data/data.js"></script>
+  <!-- <script src="./scripts/utils/api.js"></script>
+  <script src="./scripts/factories/recipe.js"></script> -->
+  <script src="./scripts/page/index.js"></script>
 </body>
 </html>

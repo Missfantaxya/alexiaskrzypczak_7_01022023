@@ -7,10 +7,4 @@
   display: flex;
 }
 
-.recipes__item{
-  width: 380px;
-  height: 364px;
-  background-color: #E7E7E7;
-  border-radius: 5px;
-  overflow: hidden;
-}
+

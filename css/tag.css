@@ -1,3 +1,7 @@
+.header__containerTag{
+  display: flex;
+}
+
 .tag__list{
   margin-bottom: 15px;
   display: flex;
@@ -10,13 +14,25 @@
 .tag__item{
   min-width: 100px;
   height: 37px;
+  margin-right: 20px;
   padding: 8px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #3282F7;
   border-radius: 5px;
+}
+
+.tag__item--ingredients{
+  background-color: #3282F7;
+}
+
+.tag__item--appliances{
+  background-color: #68D9A4;
+}
+
+.tag__item--tools{
+  background-color: #ED6454;
 }
 
 .tag__button{
