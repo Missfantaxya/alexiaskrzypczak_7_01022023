@@ -103,14 +103,14 @@
               </button>
             </div>
             <div class="sort__choice sort__choice--ingredients">
+              <p class="choice__value"> valeur 1 </p>
+              <p class="choice__value"> valeur 2 </p>
               <p class="choice__value"> valeur </p>
               <p class="choice__value"> valeur </p>
               <p class="choice__value"> valeur </p>
               <p class="choice__value"> valeur </p>
               <p class="choice__value"> valeur </p>
               <p class="choice__value"> valeur </p>
-              <p class="choice__value"> valeur </p>
-              <p class="choice__value"> valeur tatata </p>
               <p class="choice__value"> valeur </p>
               <p class="choice__value"> valeur </p>
               <p class="choice__value"> valeur </p>
@@ -136,7 +136,7 @@
             </div> 
           </form>
         </li>
-        <li class="sort__item sort__item--close sort__item--appliances">
+        <li class="sort__item sort__item--open sort__item--appliances">
           <button class="sort__button
             sort__button--appliances" type="button">
             Appareils
@@ -144,42 +144,63 @@
               src="assets/arrow-down.svg" alt="arrow"> 
           </button>
           <form class="sort__form sort__form--appliances">
-            <fieldset class="sort__field sort__field--appliances">
-              <label class="sort__label"for="sort__inputText--appliances">
-                Rechercher un appareil
-              </label>
-              <input 
-              type="text"
-              id="sort__inputText--appliances"
-              class="sort__inputText"
-              name="sort__inputText--appliances">
-            </fieldset>
+            <div class="sort__wrapper sort__wrapper--appliances">
+              <fieldset class="sort__field sort__field--appliances">
+                <label class="sort__label"for="sort__inputText--appliances">
+                  Rechercher un appareil
+                </label>
+                <input
+                class="sort__inputText"
+                type="text"
+                id="sort__inputText--appliances"
+                name="sort__inputText--appliances"
+                placeholder="Rechercher un appareil">
+              </fieldset>
+              <button class="form__button form__button--ingredients" type="button">
+                <img 
+                class="sort__arrow sort__arrow--up sort__arrow--ingredients" 
+                src="assets/arrow-down.svg"
+                alt="arrow"> 
+              </button>
+            </div>
             <div class="sort__choice sort__choice--appliances">
+              <p> valeur </p> 
+              <p> valeur </p>
             </div> 
           </form>
         </li>
-        <li class="sort__item sort__item--close sort__item--tools">
+        <li class="sort__item sort__item--open sort__item--tools">
           <button class="sort__button sort__button--tools"
             type="button">Ustensiles
               <img class="sort__picture sort__arrow--tools"
               src="assets/arrow-down.svg" alt="arrow">
           </button>
           <form class="sort__form sort__form--tools">
-            <fieldset class="sort__field sort__field--tools">
-              <label class="sort__label"for="sort__inputText--tools">
-                Rechercher un outils
-              </label>
-              <input 
-              type="search"
-              id="sort__inputText--tools"
-              name="sort__inputText--toolss">
-            </fieldset>
-              <div class="sort__choice sort__choice--tools">
-                <p> valeur </p>
-                <p> valeur </p>
-                <p> valeur </p>
-                <p> valeur </p>
-              </div> 
+            <div class="sort__wrapper sort__wrapper--tools">
+              <fieldset class="sort__field sort__field--tools">
+                <label class="sort__label"for="sort__inputText--tools">
+                  Rechercher un outils
+                </label>
+                <input
+                class="sort__inputText"
+                type="search"
+                id="sort__inputText--tools"
+                name="sort__inputText--tools"
+                placeholder="Rechercher un outil">
+              </fieldset>
+              <button class="form__button form__button--ingredients" type="button">
+                <img 
+                class="sort__arrow sort__arrow--up sort__arrow--ingredients" 
+                src="assets/arrow-down.svg"
+                alt="arrow"> 
+              </button>
+            </div >
+            <div class="sort__choice sort__choice--tools">
+              <p> valeur </p>
+              <p> valeur </p>
+              <p> valeur </p>
+              <p> valeur </p>
+            </div> 
           </form>
         </li>
       </ul>

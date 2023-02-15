@@ -6,8 +6,6 @@
 .sort__item{
   margin-right: 20px;
   height: 69px;
-  min-width: 170px;
-  width: max-content;
   background-color: #E7E7E7;
   border-radius: 5px;
 }
@@ -27,6 +25,7 @@
 
 .sort__item--open{
   min-width: 223px;
+  width: auto;
 }
 
 .sort__item--open>.sort__form{
@@ -49,11 +48,11 @@
   background-color: #3282F7;
 }
 
-.sort__item--appliances{
+.sort__item--appliances, .sort__form--appliances{
   background-color: #68D9A4;
 }
 
-.sort__item--tools{
+.sort__item--tools, .sort__form--tools{
   background-color: #ED6454;
 }
 
@@ -67,7 +66,7 @@
   font-size: 18px;
 }
 
- /* TODO élargire la box selon le contenude .sort__choice*/
+ /* FIXME élargire la box selon le contenude .sort__choice*/
 .sort__form{
   border-radius: 5px; 
   max-height: 397px;
@@ -82,12 +81,18 @@
   padding-bottom: 12px;
 }
 
+.sort__field{
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
 /* FIXME c'est une solution non accessible cf A11y wai-aria */
 .sort__label{
   display :none;
 }
 
 .sort__inputText{
+  width: 100%;
   border: none;
   background-color: transparent;
 }
@@ -97,22 +102,19 @@ color: rgba(255, 255, 255, 0.5);
 font-size: 18px;
 }
 
-
 .sort__choice {
   /* FIXME c'est une solution non accessible cf A11y wai-aria */
-  /* display: none; */
-  display: flex;
-  flex-flow: column wrap;
-  /* align-items: flex-start;
-  align-content: flex-start; */
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-rows: 1fr;
+  /* FIXME nb de ligne = nb de valeur jusqu'à max 10 */
+  grid-template-rows: repeat(10, 1fr);
+  column-gap: 100px;
+  row-gap: 10px;
+  grid-auto-flow: column;
   border:none;
   color: #FFFFFF;
   max-height: 341px;
-  max-width: 667px;
-}
-
-.choice__value{
-  margin-bottom: 10px;
-  margin-right: 10px;
+  width: max-content;
 }
 
