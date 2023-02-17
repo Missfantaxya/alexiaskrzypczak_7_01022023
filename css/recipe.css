@@ -26,8 +26,22 @@
   margin-bottom: 20px;
 }
 
+.recipe__title{
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .recipe__time{
   display: flex;
+  min-width: 83px;
+  width: max-content;
+  white-space: nowrap;
+}
+
+.recipe__clock{
+  width: 20px;
 }
 
 .recipe__duration{
@@ -40,8 +54,8 @@
 }
 
 .recipe__ingredientsList{
-  min-width: 171px;
-  width: max-content;
+  width: 171px;
+  padding-right: 5px;
 }
 
 .recipe__ingredientsItem{
@@ -49,12 +63,22 @@
 }
 
 .recipe__ingredient{
+  width: max-content;
   font-weight: 700;
 }
 
+.recipe__unit{ 
+  flex-shrink: 1;
+}
+
 .recipe__process{
-  flex-grow: 1;
+  width: 171px;
+  height: 70px;
   font-family: 'Roboto', sans-serif;
+  line-height: 100%;
+  overflow: hidden;
+  /* FIXME */
+  text-overflow: ellipsis; /*! FIXME  */ 
 }
 
 

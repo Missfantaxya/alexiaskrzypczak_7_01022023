@@ -73,8 +73,8 @@
     <!-- TODO voir si les input sont type text ou search -->
     <div class="header__containerSort">
       <ul class="sort__list">
-        <!-- TODO ajouter la classe ...--close -->
-        <li class="sort__item sort__item--open sort__item--ingredients">
+        <!-- TODO initier avec la classe ...--close -->
+        <li class="sort__item sort__item--close sort__item--ingredients">
           <button class="sort__button sort__button--ingredients" type=button>
               Ingrédients
                 <img 
@@ -135,8 +135,9 @@
               <p class="choice__value"> valeur </p>
             </div> 
           </form>
-        </li>
-        <li class="sort__item sort__item--open sort__item--appliances">
+        </li> 
+        <!-- TODO initier avec la classe ...--close -->
+        <li class="sort__item sort__item--close sort__item--appliances">
           <button class="sort__button
             sort__button--appliances" type="button">
             Appareils
@@ -168,8 +169,9 @@
               <p> valeur </p>
             </div> 
           </form>
-        </li>
-        <li class="sort__item sort__item--open sort__item--tools">
+        </li> 
+        <!-- TODO initier avec la classe ...--close -->
+        <li class="sort__item sort__item--close sort__item--tools">
           <button class="sort__button sort__button--tools"
             type="button">Ustensiles
               <img class="sort__picture sort__arrow--tools"
@@ -205,41 +207,13 @@
         </li>
       </ul>
     </div>
-      <ul class="recipes__list">
-        <li class="recipe__card">
-            <div class="recipe__containerPicture">
-            </div>
-            <div class="recipe__titleContainer">
-              <div class="recipe__content">
-                <h3 class="recipe__title">
-                  Titre de la recette
-                </h3>
-                <div class="recipe__time">
-                  <img class="recipe__clock"
-                src="assets/clock.svg" alt="clock">
-                  <p class="recipe__duration">
-                    X min
-                  </p>
-                </div >
-              </div>
-              <div class="recipe__detailsContainer">
-                <ul class="recipe__ingredientsList">
-                  <li class="recipe__ingredientsItem">
-                    <p class="recipe__ingredient">
-                      ingrédients:&nbsp;
-                    </p>
-                    <p class="recipe__quantity">quantité</p>
-                  </li>
-                </ul>
-                <p class="recipe__process">procédure de la recette</p>
-              </div>
-            </div>
-        </li>
-      </ul>
+      <ul class="recipes__list"></ul>
   </main>
   <script src="data/data.js"></script>
   <!-- <script src="./scripts/utils/api.js"></script>
   <script src="./scripts/factories/recipe.js"></script> -->
+  <!-- <script src="./scripts/models/recipe.js"></script> -->
+  <script src="./scripts/templates/recipe.js"></script>
   <script src="./scripts/page/index.js"></script>
 </body>
 </html>
