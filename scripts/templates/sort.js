@@ -1,6 +1,17 @@
 function getSortChoice ( data )
 {
-  const { ingredients, appliances, ustensils } = data
+  // const { ingredients, appliances, ustensils } = data
+
+  //récupérations de tous les ingré&dients de toutes les recettes dans un tableau
+  AllRecipesIngredients = []
+  data.forEach( recipe => recipe.ingredients.forEach( ingredient => AllRecipesIngredients.push( ingredient.ingredient ) ) )
+  console.log( "AllRecipesIngredients : ", AllRecipesIngredients )
+  
+  // retirer les doublons du tableau
+  const newSet = new Set( AllRecipesIngredients )
+  console.log( "newSet : ", newSet )
+  const AllIngredients = [ ...newSet ]
+  console.log( "AllIngredients : ", AllIngredients )
   
   // construction du DOM ----------------
   // TODO constructoin avec --ingrédient mais le faire de façon générique et le spécialiser avec le js
@@ -65,10 +76,13 @@ function getSortChoice ( data )
   sortChoice.className = "sort__choice sort__choice--ingredients"
   sortForm.appendChild( sortChoice )
   
-  const choiceValue = document.createElement( "p" )
-  choiceValue.className = "choice__value"
-  choiceValue.textContent = "valeur"
-  sortChoice.appendChild( choiceValue )
+  AllIngredients.forEach( ingredient =>
+  {
+    var choiceValue = document.createElement( "p" )
+    choiceValue.className = "choice__value"
+    choiceValue.textContent = ingredient
+    sortChoice.appendChild( choiceValue )
+  } )
   
   //événements-----------
 
@@ -79,7 +93,7 @@ function getSortChoice ( data )
       sortItem.classList.add("sort__item--open")
     }
   }
-  sortButton.addEventListener( "click", handleSortButton ) //!
+  sortButton.addEventListener( "click", handleSortButton )
   
   function handleFormButton() {
     if ( sortItem.classList.contains( "sort__item--open" ) )

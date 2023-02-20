@@ -1,5 +1,5 @@
 
-console.log( "recipes[0] : ", recipes[ 0 ] )
+console.log( "recipes : ", recipes )
 
 recipes.forEach( recipe => 
   getRecipe(recipe)

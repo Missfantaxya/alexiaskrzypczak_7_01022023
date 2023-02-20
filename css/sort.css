@@ -105,16 +105,19 @@ font-size: 18px;
 .sort__choice {
   /* FIXME c'est une solution non accessible cf A11y wai-aria */
   display: grid;
-  grid-auto-columns: 1fr;
+  grid-auto-columns: max-content;
   grid-auto-rows: 1fr;
-  /* FIXME nb de ligne = nb de valeur jusqu'à max 10 */
+  /* FIXME nb de ligne = nb de valeur jusqu'à max 10 => le faire en JS*/
   grid-template-rows: repeat(10, 1fr);
   column-gap: 100px;
   row-gap: 10px;
   grid-auto-flow: column;
+  overflow-X: scroll;
+  overflow-y: hidden;
   border:none;
   color: #FFFFFF;
   max-height: 341px;
+  max-width: 667px;
   width: max-content;
 }
 
