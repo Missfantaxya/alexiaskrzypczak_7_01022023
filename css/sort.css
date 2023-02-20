@@ -103,7 +103,6 @@ font-size: 18px;
 }
 
 .sort__choice {
-  /* FIXME c'est une solution non accessible cf A11y wai-aria */
   display: grid;
   grid-auto-columns: max-content;
   grid-auto-rows: 1fr;

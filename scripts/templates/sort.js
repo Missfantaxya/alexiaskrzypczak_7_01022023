@@ -1,16 +1,38 @@
 function getSortChoice ( data )
 {
+  sortType = [
+    "ingredients",
+    "appareils",
+    "ustensils"
+  ]
   //récupérations de tous les ingrédients de toutes les recettes dans un tableau
-  AllRecipesIngredients = []
-  data.forEach( recipe => recipe.ingredients.forEach( ingredient => AllRecipesIngredients.push( ingredient.ingredient ) ) )
-  console.log( "AllRecipesIngredients : ", AllRecipesIngredients )
+  allRecipesIngredients = []
+  data.forEach( recipe => recipe.ingredients.forEach( ingredient => allRecipesIngredients.push( ingredient.ingredient ) ) )
   
-  // retirer les doublons du tableau
-  const newSet = new Set( AllRecipesIngredients )
-  console.log( "newSet : ", newSet )
-  const AllIngredients = [ ...newSet ]
-  console.log( "AllIngredients : ", AllIngredients )
+  // retrait des doublons du tableau des ingrédients
+  const newSetIngredients = new Set( allRecipesIngredients )
+  const allIngredients = [ ...newSetIngredients ]
+  // console.log( "allIngredients : ", allIngredients ) //*
   
+  // Récupération de tous les appareils
+  allRecipesAppliances = []
+  data.forEach( recipe => allRecipesAppliances.push( recipe.appliance ) )
+
+  // retrait des doublons du tableau des appareils
+  const newSetAppliances = new Set( allRecipesAppliances )
+  const allAppliances = [ ...newSetAppliances ]
+  // console.log( "allAppliances : ", allAppliances ) //*
+
+  //récupérations de tous les ustensils de toutes les recettes dans un tableau
+  allRecipesTools = []
+  data.forEach( recipe => recipe.ustensils.forEach( ustensil => allRecipesTools.push( ustensil ) ) )
+  
+  // retrait des doublons du tableau des ustensils
+  const newSetTools = new Set( allRecipesTools )
+  const allTools = [ ...newSetTools ]
+  // console.log( "allTools : ", allTools ) //*
+
+
   // construction du DOM ----------------
   // TODO construction avec --ingrédient mais le faire de façon générique et le spécialiser avec le js
   const sortList = document.querySelector( ".sort__list" )
@@ -73,7 +95,7 @@ function getSortChoice ( data )
   sortChoice.className = "sort__choice sort__choice--ingredients"
   sortForm.appendChild( sortChoice )
   
-  AllIngredients.forEach( ingredient =>
+  allIngredients.forEach( ingredient =>
   {
     var choiceValue = document.createElement( "p" )
     choiceValue.className = "choice__value"
