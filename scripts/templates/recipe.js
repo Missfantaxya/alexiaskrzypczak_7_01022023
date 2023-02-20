@@ -1,7 +1,6 @@
 function getRecipe( data )
 {
   const { description, ingredients, name, time } = data
-// console.log ("ingredients : ", ingredients)
 
   const recipeList = document.querySelector( ".recipes__list" )
   const recipeCard = document.createElement( "li" )
