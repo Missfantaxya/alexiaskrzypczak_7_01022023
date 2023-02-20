@@ -1,8 +1,6 @@
 function getSortChoice ( data )
 {
-  // const { ingredients, appliances, ustensils } = data
-
-  //récupérations de tous les ingré&dients de toutes les recettes dans un tableau
+  //récupérations de tous les ingrédients de toutes les recettes dans un tableau
   AllRecipesIngredients = []
   data.forEach( recipe => recipe.ingredients.forEach( ingredient => AllRecipesIngredients.push( ingredient.ingredient ) ) )
   console.log( "AllRecipesIngredients : ", AllRecipesIngredients )
@@ -14,11 +12,10 @@ function getSortChoice ( data )
   console.log( "AllIngredients : ", AllIngredients )
   
   // construction du DOM ----------------
-  // TODO constructoin avec --ingrédient mais le faire de façon générique et le spécialiser avec le js
+  // TODO construction avec --ingrédient mais le faire de façon générique et le spécialiser avec le js
   const sortList = document.querySelector( ".sort__list" )
   // console.log ("sortList : ", sortList) //*
   const sortItem = document.createElement( "li" )
-  // TODO initier avec la classe "--close"
   sortItem.className = "sort__item sort__item--close sort__item--ingredients"
   sortList.appendChild( sortItem )
   
