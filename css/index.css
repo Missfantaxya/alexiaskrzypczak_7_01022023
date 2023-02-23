@@ -1,3 +1,17 @@
-.header__title{
-  color: #D04F4F;
+@import 'header.css';
+@import 'main.css';
+
+*, *::before, *::after {
+  padding :0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+body{
+  margin: 0 100px;
+}
+
+button{
+  background-color: transparent;
+  border: none;
 }

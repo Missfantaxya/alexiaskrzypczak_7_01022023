@@ -10,7 +10,11 @@
   <meta name="description" content="This is project 7 of the Javascript
   application Developer - React course at Openclassrooms."> 
   
-  <!--  <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"> -->
+   <link rel="Shortcut Icon" href="./assets/logo.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/index.css">
@@ -18,51 +22,65 @@
 <body>
   <header class="app__header">
     <div class="header__containerTitle">
-      <img class="header__logo" source="" alt=""/>
-      <h1 class="header__title">Titre</h1>
+      <img 
+      class="header__logo" 
+      src="assets/logo.svg" 
+      alt="logo">
+      <h1 class="header__title">Les petits plats</h1>
     </div>
-    <div class="header__containerSearch">
-      <input class="header__searchInput" type="search" name="recipes" id="recipes" placeholder="Rechercher une recette"></input>
-      <label class="header__searchLabel" for="recipes">svg d'une loupe</label>
-    </div>
-    <div class="header__containerTag">
-      <ul class="header__tagList">
-        <li class="header__tagItem">Tag</li>
-      </ul>
-    </div>
-    <div class="header__containerSort">
-      <ul class="header__sortList">
-        <li class="header__sortItem--ingredients">Ingrédients</li>
-        <li class="header__sortItem--appliances">Apparaeils</li>
-        <li class="header__sortItem--tools">Ustensiles</li>
-      </ul>
-    </divclass>
+    <form class="header__containerSearch">
+      <input 
+      class="search__input" 
+      type="search" 
+      name="recipes" 
+      placeholder="Rechercher une recette">
+      <label class="search__label" for="recipes">
+        <button id="recipes" class="search__button" type="submit"> 
+          <img 
+          class="search__picture" 
+          src="assets/research.svg" 
+          alt="logo">
+        </button>
+      </label>
+    </form>
   </header>
   <main class="app__main">
-      <ul class="recipes__list">
-        <li class="recipes__item">
-          <!-- <a class="recipes__link" href="#"> -->
-            <div class="recipe__containerPicture">
-              <!-- <img src="" alt=""> -->
-            </div>
-            <div class="recipe__titleContainer">
-              <div class="recipe__content">
-                <h3 class="recipe__title">Titre de la recette</h3>
-                <p class="recipe__timing">Temp de la recette</p>
-              </div>
-              <div class="recipe__detailsContainer">
-                <ul class="recipe__ingredientsList">
-                  <li class="recipe__ingredientsItem">ingrédients...</li>
-                </ul>
-                <p class="recipe__process">procédure de la recette</p>
-              </div>
-            </div>
-          <!-- </a> -->
+    <div class="header__containerTag">
+      <ul class="tag__list tag__list--ingredients">
+        <li class="tag__item tag__item--ingredients">Tag
+          <button class="tag__button tag__button--ingredients" type="button">
+            <img class="tag__picture" src="assets/cross.svg" alt="cross">
+          </button>
         </li>
       </ul>
+      <ul class="tag__list tag__list--appliances">
+        <li class="tag__item tag__item--appliances">Tag
+          <button class="tag__button tag__button--appliances" type="button">
+            <img class="tag__picture" src="assets/cross.svg" alt="cross">
+          </button>
+        </li>
+      </ul>
+      <ul class="tag__list tag__list--tools">
+        <li class="tag__item tag__item--tools">Tag
+          <button class="tag__button tag__button--tools" type="button">
+            <img class="tag__picture" src="assets/cross.svg" alt="cross">
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- TODO collapse qui se déroule sur un input text avec liste de tous les ingrédients et qui diminue selon se qui est tapé -->
+    <!-- TODO voir si les input sont type text ou search -->
+    <div class="header__containerSort">
+      <ul class="sort__list"></ul>
+    </div>
+      <ul class="recipes__list"></ul>
   </main>
-  <footer class="app__footer">
-    <p class="footer__content">Footer absent de la maquette</p>
-  </footer>
+  <script src="data/data.js"></script>
+  <!-- <script src="./scripts/utils/api.js"></script>
+  <script src="./scripts/factories/recipe.js"></script> -->
+  <!-- <script src="./scripts/models/recipe.js"></script> -->
+  <script src="./scripts/templates/sort.js"></script>
+  <script src="./scripts/templates/recipe.js"></script>
+  <script src="./scripts/page/index.js"></script>
 </body>
 </html>

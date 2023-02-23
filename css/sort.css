@@ -1,0 +1,123 @@
+.sort__list{
+  display: flex;
+  flex-direction: row
+}
+
+.sort__item{
+  margin-right: 20px;
+  height: 69px;
+  background-color: #E7E7E7;
+  border-radius: 5px;
+}
+
+.sort__item--close{
+  width: 170px;
+  padding: 23px 18px 24px 15px;
+}
+
+.sort__item--close>.sort__form{
+  display:none;
+}
+
+.sort__item--close>.sort__button{
+  display:flex;
+}
+
+.sort__item--open{
+  min-width: 223px;
+  width: auto;
+}
+
+.sort__item--open>.sort__form{
+  display:block;
+}
+
+.sort__item--open>.sort__button{
+  display:none;
+}
+
+.sort__arrow{
+  width: 16px;
+}
+
+.sort__arrow--up{
+  transform: rotate(180deg);
+}
+
+.sort__item--ingredients, .sort__form--ingredients{
+  background-color: #3282F7;
+}
+
+.sort__item--appliances, .sort__form--appliances{
+  background-color: #68D9A4;
+}
+
+.sort__item--tools, .sort__form--tools{
+  background-color: #ED6454;
+}
+
+.sort__button{
+  /* display: flex; */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  color: #FFFFFF;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+/* FIXME élargire la box selon le contenude .sort__choice*/
+.sort__form{
+  border-radius: 5px; 
+  max-height: 397px;
+  font-size: 18px;
+  padding: 25px 18px 12px 19px;
+}
+
+.sort__wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 12px;
+}
+
+.sort__field{
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+/* FIXME c'est une solution non accessible cf A11y wai-aria */
+.sort__label{
+  display :none;
+}
+
+.sort__inputText{
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.sort__inputText::placeholder{
+color: rgba(255, 255, 255, 0.5);
+font-size: 18px;
+}
+
+.sort__choice {
+  display: grid;
+  grid-auto-columns: max-content;
+  grid-auto-rows: 1fr;
+  /* FIXME nb de ligne = nb de valeur jusqu'à max 10 => le faire en JS*/
+  grid-template-rows: repeat(10, 1fr);
+  column-gap: 100px;
+  row-gap: 10px;
+  grid-auto-flow: column;
+  overflow-X: scroll;
+  overflow-y: hidden;
+  border:none;
+  color: #FFFFFF;
+  max-height: 341px;
+  max-width: 667px;
+  width: max-content;
+}
+

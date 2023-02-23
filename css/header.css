@@ -1,0 +1,61 @@
+/* Style du header */
+.app__header{
+  margin-top: 42px;
+}
+
+/* Style du Logo et du titre */
+.header__containerTitle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.header__title{
+  font-family: "DM sans";
+  color: #D04F4F;
+}
+
+.header__logo{
+  height: 50.48px;
+}
+
+/* Style de la barre de recherche */
+.header__containerSearch{
+  margin-top: 17px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #E7E7E7;
+  width: 100%;
+  height: 69px;
+}
+
+.search__input{ 
+  background-color: #E7E7E7; 
+  flex: auto;
+  border: none;
+  padding-left: 24px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.search__input:focus{
+  outline: none;
+}
+
+.search__label{
+  height: 100%;
+  margin-left: 20px;
+}
+
+.search__button{
+  height: 100%;
+  padding-right: 16.43px;
+}
+
+.search__picture{
+  width: 32.06px;
+}

@@ -1,0 +1,14 @@
+@import 'tag.css';
+@import 'sort.css';
+@import 'recipe.css';
+
+.recipes__list{
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 50px;
+  column-gap: 50px;
+  grid-auto-flow : row;
+}
+
+
