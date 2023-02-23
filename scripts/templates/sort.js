@@ -7,7 +7,6 @@ function getSortChoice ( data )
   // retrait des doublons du tableau des ingrédients
   const newSetIngredients = new Set( allRecipesIngredients )
   const allIngredients = [ ...newSetIngredients ]
-  // console.log( "allIngredients : ", allIngredients ) //*
   
   // Récupération de tous les appareils
   allRecipesAppliances = []
@@ -16,7 +15,6 @@ function getSortChoice ( data )
   // retrait des doublons du tableau des appareils
   const newSetAppliances = new Set( allRecipesAppliances )
   const allAppliances = [ ...newSetAppliances ]
-  // console.log( "allAppliances : ", allAppliances ) //*
 
   //récupérations de tous les ustensils de toutes les recettes dans un tableau
   allRecipesTools = []
@@ -25,7 +23,6 @@ function getSortChoice ( data )
   // retrait des doublons du tableau des ustensils
   const newSetTools = new Set( allRecipesTools )
   const allTools = [ ...newSetTools ]
-  // console.log( "allTools : ", allTools ) //*
 
   sortTypes = [
     {
@@ -49,9 +46,7 @@ function getSortChoice ( data )
   ]
 
   // construction du DOM ----------------
-  // TODO construction avec --ingrédient mais le faire de façon générique et le spécialiser avec le js
   const sortList = document.querySelector( ".sort__list" )
-  // console.log ("sortList : ", sortList) //*
 
   function sortDropdown ( typeOfSorting )
   {
@@ -130,12 +125,9 @@ function getSortChoice ( data )
   //événements-----------   
 
   sortButtons = document.querySelectorAll( ".sort__button" )
-  // console.log( "sortButtons : ", sortButtons ) //*
   sortButtons.forEach( sortButton => 
   {
-    // console.log( "sortButton : ", sortButton ) //*
     const sortItem = sortButton.parentElement
-    // console.log( "sortItem : ", sortItem ) //*
     function handleSortButton (  )
     {
       if ( sortItem.classList.contains( "sort__item--close" ) )
@@ -148,11 +140,9 @@ function getSortChoice ( data )
   } )
 
   formButtons = document.querySelectorAll( ".form__button" )
-  // console.log( "formButtons : ", formButtons ) //*
   formButtons.forEach( formButton => 
   {
     const sortItem = formButton.closest('.sort__item')
-    // console.log( "sortItem : ", sortItem ) //*
     function handleFormButton ()
     {
       
@@ -162,7 +152,6 @@ function getSortChoice ( data )
         sortItem.classList.add("sort__item--close")
       }
     }
-
     formButton.addEventListener( "click", handleFormButton )
   } 
   )
