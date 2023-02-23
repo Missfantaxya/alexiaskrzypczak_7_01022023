@@ -47,7 +47,7 @@ function getSortChoice ( data )
 
   // construction du DOM ----------------
   const sortList = document.querySelector( ".sort__list" )
-
+// TODO améliorer le dropdown en construisant le sort__choice seulement à l'ouverture au lieu de jouer avec les class
   function sortDropdown ( typeOfSorting )
   {
     const sortItem = document.createElement( "li" )
@@ -122,8 +122,8 @@ function getSortChoice ( data )
     sortDropdown (sortType)
   } )
   
-  //événements-----------   
-
+  //événements-----------
+ // TODO fermer le dropdown ouvert si un autre est ouvert
   sortButtons = document.querySelectorAll( ".sort__button" )
   sortButtons.forEach( sortButton => 
   {
