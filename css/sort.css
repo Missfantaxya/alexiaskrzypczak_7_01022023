@@ -112,7 +112,7 @@ font-size: 18px;
   display: grid;
   grid-auto-columns: max-content;
   grid-auto-rows: 1fr;
-  /* fait en js */
+  /* fait en js retirer qand sû que ça fonctionne avaec moins de 10 lignes*/
   /* grid-template-rows: repeat(10, 1fr); */
   column-gap: 100px;
   row-gap: 10px;
