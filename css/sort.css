@@ -63,6 +63,7 @@
   align-items: baseline;
   width: 100%;
   color: #FFFFFF;
+  text-transform: capitalize;
   font-size: 18px;
 }
 
