@@ -98,6 +98,11 @@
   background-color: transparent;
 }
 
+/* FIXME */
+.sort__inputText:focus{
+  border: none; 
+}
+
 .sort__inputText::placeholder{
 color: rgba(255, 255, 255, 0.5);
 font-size: 18px;
@@ -107,8 +112,8 @@ font-size: 18px;
   display: grid;
   grid-auto-columns: max-content;
   grid-auto-rows: 1fr;
-  /* FIXME nb de ligne = nb de valeur jusqu'à max 10 => le faire en JS*/
-  grid-template-rows: repeat(10, 1fr);
+  /* fait en js */
+  /* grid-template-rows: repeat(10, 1fr); */
   column-gap: 100px;
   row-gap: 10px;
   grid-auto-flow: column;

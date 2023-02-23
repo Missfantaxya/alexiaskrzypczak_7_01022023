@@ -109,10 +109,16 @@ function getSortChoice ( data )
     formArrow.src = "../../assets/arrow-down.svg"
     formArrow.alt = "arrow"
     formButton.appendChild( formArrow )
-    
+
+    const itemsLength = typeOfSorting[ currentSort ].items.length
+    // console.log( "itemsLength : ", itemsLength ) //*
+    const gridRows =  itemsLength > 10  ? 10 : itemsLength
+    console.log( "gridRows : ", gridRows )
+
     const sortChoice = document.createElement( "div" )
     sortChoice.className = `sort__choice sort__choice${ typeOfSorting[ currentSort ].class }`
-    // TODO ajouter le style pour le lignes du display grid
+    sortChoice.style.gridTemplateRows = `repeat(${gridRows}, 1fr)`
+    
     sortForm.appendChild( sortChoice )
     typeOfSorting[currentSort].items.forEach( item =>
     {
