@@ -197,7 +197,10 @@ function getSortChoice ( data )
       const newItems = []
         currentItems.forEach( item =>
         {
-        if ( item.includes( inputValue ) ) //! sensible à la casse
+          //FIXME
+          if ( item.includes( inputValue ) )
+          //! sensible à la casse
+          //! attention pour "cocohdus" montrera "coco"
         {
           newItems.push(item)
         }
