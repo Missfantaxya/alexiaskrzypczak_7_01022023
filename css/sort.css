@@ -101,10 +101,13 @@
   font-weight: 700;
 }
 
+
 /* FIXME */
 .sort__inputText:focus{
   border: none; 
 }
+
+/* FIXME .sort__inputText avec écriture */
 
 .sort__inputText::placeholder{
 color: rgba(255, 255, 255, 0.5);

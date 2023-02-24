@@ -1,4 +1,4 @@
-//TODO remplir le tableau [items] avec ce qui est tapé dans les champs des tri
+//TODO remplir le tableau [items] avec ce qui est tapé dans les champs des tris 
 tagTypes = [
     {
       name: "ingredient",

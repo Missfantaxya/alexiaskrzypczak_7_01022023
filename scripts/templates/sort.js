@@ -113,7 +113,7 @@ function getSortChoice ( data )
     const itemsLength = typeOfSorting[ currentSort ].items.length
     // console.log( "itemsLength : ", itemsLength ) //*
     const gridRows =  itemsLength > 10  ? 10 : itemsLength
-    console.log( "gridRows : ", gridRows )
+    // console.log( "gridRows : ", gridRows )//*
 
     const sortChoice = document.createElement( "div" )
     sortChoice.className = `sort__choice sort__choice${ typeOfSorting[ currentSort ].class }`
@@ -135,33 +135,7 @@ function getSortChoice ( data )
   } )
   
   //événements-----------
-
-
-  const toObserve = document.querySelector( ".sort__list" )
-  // Création d'un observateur pour le changement du DOM
-  const observer = new MutationObserver( () =>
-  {
-    const formButtons = document.querySelectorAll( ".form__button" )
-    formButtons.forEach( formButton =>
-    {
-      const sortItem = formButton.closest( '.sort__item' )
-      function closeFormSort ()
-      {
-        if ( sortItem.classList.contains( "sort__item--open" ) )
-        {
-          sortItem.classList.remove( "sort__item--open" )
-          sortItem.classList.add( "sort__item--close" )
-          const sortForm = formButton.closest( ".sort__form" )
-          sortForm.remove()
-        }
-      }
-      formButton.addEventListener( "click", closeFormSort )
-    } )
-  } )
-  observer.observe( toObserve, { subtree: true, childList: true } )
-
-  // TODO fermer le dropdown ouvert si un autre est ouvert
-
+  
   var sortButtons = document.querySelectorAll( ".sort__button" )
   sortButtons.forEach( sortButton => 
   {
@@ -179,4 +153,47 @@ function getSortChoice ( data )
     }
     sortButton.addEventListener( "click", OpenFormSort )
   } )
+
+  const toObserveSort = document.querySelector( ".sort__list" )
+  // Création d'un observateur pour le changement du DOM
+  const observer = new MutationObserver( () =>
+  {
+    const inputSort = document.querySelector( ".sort__inputText" )
+
+    function filtering ()
+    {
+      var textValue = inputSort.value
+      // console.log("textValue : ", textValue) //* 
+      console.log( "sortTypes : ", sortTypes )//* []
+      // console.log("currentSort :", currentSort)//! not defined
+      // TODO ajouter un regex de validation : const regexText = /^[a-z]{2,}/i en modifiant le 2 minimum 
+      // TODO récup les items du bon tri 
+      // TODO filtrer le tableaux des items selon les textValue 
+    }
+
+    // TODO bloquer la touche entrée
+    //~ WIP
+    inputSort.addEventListener( "input", filtering )
+    //! ne fonctionne pas si on sélectionne le préremplissage de google
+
+    const formButtons = document.querySelectorAll( ".form__button" )
+    formButtons.forEach( formButton =>
+    {
+      const sortItem = formButton.closest( '.sort__item' )
+      function closeFormSort ()
+      {
+        if ( sortItem.classList.contains( "sort__item--open" ) )
+        {
+          sortItem.classList.remove( "sort__item--open" )
+          sortItem.classList.add( "sort__item--close" )
+          const sortForm = formButton.closest( ".sort__form" )
+          sortForm.remove()
+        }
+      }
+      formButton.addEventListener( "click", closeFormSort )
+    } )
+  } )
+  observer.observe( toObserveSort, { subtree: true, childList: true } )
+
+  // TODO fermer le dropdown ouvert si un autre est ouvert
 }
