@@ -1,28 +1,3 @@
-// tagTypes = [
-//     {
-//       name: "ingredient",
-//       class: "ingredients",
-//       items: [
-//         "itemI--1",
-//         "itemI--2"
-//       ]
-//     },
-//     {
-//       name: "appliance",
-//       class: "appliances",
-//       items: [
-//         "itemA--1",
-//       ]
-//     },
-//     {
-//       name: "tools",
-//       class: "tools",
-//       items: [
-//         "itemT--1",
-//       ]
-//     }
-// ]
-  
 function getTag (
   choiceSelected,
   choiceSort)
