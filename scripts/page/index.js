@@ -7,7 +7,5 @@ recipes.forEach( recipe =>
   
 getSortChoice( recipes )
 
-// TODO l'appliquer à chaque envoired'un formulaire dans les tris
-getTag()
 
 

@@ -28,7 +28,7 @@ function getSortChoice ( data )
 
   sortTypes = [
     {
-      type: "ingredients",
+      type: "ingrédients",
       placeholder : "ingrédient",
       class : "ingredients",
       items: allIngredients,
@@ -114,9 +114,7 @@ function getSortChoice ( data )
     formButton.appendChild( formArrow )
 
     const itemsLength = typeOfSorting[ currentSort ].items.length
-    console.log( "itemsLength : ", itemsLength ) //*
     const gridRows =  itemsLength > 10  ? 10 : itemsLength
-    console.log( "gridRows : ", gridRows )//*
     const sortChoice = document.createElement( "div" )
     sortChoice.className = `sort__choice sort__choice--${ typeOfSorting[ currentSort ].class }`
     sortChoice.style.gridTemplateRows = `repeat(${ gridRows }, 1fr)`
@@ -163,26 +161,16 @@ function getSortChoice ( data )
   } )
 
   const toObserveSort = document.querySelector( ".sort__list" )
+
   // Création d'un observateur pour le changement du DOM
   const observer = new MutationObserver( () =>
   {
     const inputSort = document.querySelector( ".sort__inputText" )
-    // console.log("inputSort :", inputSort)//*
 
     function filtering ()
     {
-      const sortForm = inputSort.closest(".sort__form") //? 
-      // ! regex non fonctionnel
-      // const regexText = /^[a-z]\D/i
-      // function isValidText (textValue)
-      // {
-      //   return regexText.test(textValue)
-      // }
+      const sortForm = inputSort.closest(".sort__form")
       var inputValue = inputSort.value
-      console.log( "inputValue :", inputValue ) //*
-      // console.log("typeOf de inputValue :", typeof inputValue)
-      // var textValid = isValidText( inputValue )
-      // console.log("textValid :", textValid)
       var sortItem = inputSort.closest( ".sort__item" )
       var sortButton = sortItem.firstChild
       const currentTexte = sortButton.textContent
@@ -190,21 +178,20 @@ function getSortChoice ( data )
       //récupération de l'index de l'objet du tri
       const sorType = ( element ) => element.type === currentTexte
       const currentSort = sortTypes.findIndex( sorType )
-      console.log( "currentSort :", currentSort ) //*
 
       // items du tri
       const currentItems = sortTypes[ currentSort ].items
       const newItems = []
-        currentItems.forEach( item =>
-        {
-          //FIXME
-          if ( item.includes( inputValue ) )
-          //! sensible à la casse
-          //! attention pour "cocohdus" montrera "coco"
+      currentItems.forEach( item =>
+      {
+        //FIXME
+        if ( item.includes( inputValue ) )
+        //! sensible à la casse
+        //! attention pour "cocohdus" montrera "coco"
         {
           newItems.push(item)
         }
-        } )
+      } )
       
       // nouveau DOM avec le tri
       const newItemsLength = newItems.length
@@ -230,8 +217,41 @@ function getSortChoice ( data )
     // TODO
     inputSort.addEventListener( "input", filtering )
     //! ne fonctionne pas si on sélectionne le préremplissage de google
-    //! error quand on ferme le dropdown
+    //! error quand le dropdown se ferme
 
+    //selection d'un tag
+    const choices = document.querySelectorAll( ".choice__value" )
+    choices.forEach( choice =>
+    {
+      function selectChoice ()
+      {
+        // TODO récupérer le type de tri
+        // TODO récupérer la class
+        const choiceSelected = choice.textContent 
+        console.log( "choiceSelected : ", choiceSelected ) //*
+        const sortItem = choice.closest( ".sort__item" )
+        const sortChoiceButton = sortItem.firstChild
+        const sortChoice = sortChoiceButton.textContent
+        console.log( "sortChoice : ", sortChoice )
+
+        getTag (
+          choiceSelected,
+          sortChoice )
+      }
+      choice.addEventListener( "click", selectChoice )
+      
+
+      function closeForm ()
+      {
+        const sortItem = formButton.closest( '.sort__item' )
+        sortItem.classList.remove( "sort__item--open" )
+        sortItem.classList.add( "sort__item--close" )
+        const sortForm = choice.closest( ".sort__form" )
+        sortForm.remove()
+      }
+      choice.addEventListener( "click", closeForm )
+    } )
+  
     const formButtons = document.querySelectorAll( ".form__button" )
     formButtons.forEach( formButton =>
     {
@@ -247,6 +267,7 @@ function getSortChoice ( data )
         }
       }
       formButton.addEventListener( "click", closeFormSort )
+      //! error console mais fonctionne
     } )
   } )
   observer.observe( toObserveSort, { subtree: true, childList: true } )

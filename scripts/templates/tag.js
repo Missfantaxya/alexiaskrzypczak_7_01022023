@@ -1,48 +1,68 @@
-//TODO remplir le tableau [items] avec ce qui est tapé dans les champs des tris 
-tagTypes = [
-    {
-      name: "ingredient",
-      class: "ingredients",
-      items: [
-        "itemI--1",
-        "itemI--2"
-      ]
-    },
-    {
-      name: "appliance",
-      class: "appliances",
-      items: [
-        "itemA--1",
-      ]
-    },
-    {
-      name: "tools",
-      class: "tools",
-      items: [
-        "itemT--1",
-      ]
-    }
-]
+// tagTypes = [
+//     {
+//       name: "ingredient",
+//       class: "ingredients",
+//       items: [
+//         "itemI--1",
+//         "itemI--2"
+//       ]
+//     },
+//     {
+//       name: "appliance",
+//       class: "appliances",
+//       items: [
+//         "itemA--1",
+//       ]
+//     },
+//     {
+//       name: "tools",
+//       class: "tools",
+//       items: [
+//         "itemT--1",
+//       ]
+//     }
+// ]
   
-function getTag ()
+function getTag (
+  choiceSelected,
+  choiceSort)
 {
+  console.log( "choiceSelected tag : ", choiceSelected )//!
+  console.log( "choiceSort tag : ", choiceSort )//!
+  
+  var choiceClass = ""
+  if ( choiceSort === "ingrédients" )
+  {
+    choiceClass = "ingredients"
+  }
+  else if ( choiceSort === "appareils" )
+  {
+    choiceClass = "appliances"
+  }
+  else if ( choiceSort === "ustensils" )
+  {
+    choiceClass = "tools"
+  }
+
+  console.log( "choiceClass tag : ", choiceClass )//!
+
   // construction du DOM---------------
   const headerContainerTag = document.querySelector( ".header__containerTag" )
 
-  tagTypes.forEach(tagType => {
+  // tagTypes.forEach(tagType => {
     const tagList = document.createElement( "ul" )
-    tagList.className = `tag__list tag__list--${ tagType.class }`
+    tagList.className = `tag__list tag__list--${ choiceClass }`
     headerContainerTag.appendChild( tagList )
 
-    tagType.items.forEach( item =>
-    {
+    // tagType.items.forEach( item =>
+    // {
       const tagItem = document.createElement( "li" )
-      tagItem.className = `tag__item tag__item--${ tagType.class }`
-      tagItem.textContent = item
+      tagItem.className = `tag__item tag__item--${ choiceClass }`
+      tagItem.textContent = choiceSelected
       tagList.appendChild( tagItem )
       
       const tagButton = document.createElement( "button" )
-      tagButton.className = `tag__button tag__button--${ tagType.class }`
+      tagButton.className = `tag__button tag__button--${ choiceClass }`
       tagButton.type = "button"
       tagItem.appendChild( tagButton )
       
@@ -51,7 +71,7 @@ function getTag ()
       tagPicture.src = "../../assets/cross.svg"
       tagPicture.alt = "cross"
       tagButton.appendChild(tagPicture)
-    } )
+    // } )
 
     //événements----------------------
 
@@ -66,7 +86,7 @@ function getTag ()
       }
       tagButton.addEventListener( "click", closeTag)
     } )
-  })
+  // })
   
   
 }
