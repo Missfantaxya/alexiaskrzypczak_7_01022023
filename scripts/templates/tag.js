@@ -2,9 +2,6 @@ function getTag (
   choiceSelected,
   choiceSort)
 {
-  console.log( "choiceSelected tag : ", choiceSelected )//!
-  console.log( "choiceSort tag : ", choiceSort )//!
-  
   var choiceClass = ""
   if ( choiceSort === "ingrédients" )
   {
@@ -18,8 +15,6 @@ function getTag (
   {
     choiceClass = "tools"
   }
-
-  console.log( "choiceClass tag : ", choiceClass )//!
 
   // construction du DOM---------------
   const headerContainerTag = document.querySelector( ".header__containerTag" )

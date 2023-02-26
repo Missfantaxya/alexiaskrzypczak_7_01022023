@@ -1,7 +1,5 @@
 function getSortChoice ( data )
 {
-  // console.log("data : ", data) //*
-
   //récupérations de tous les ingrédients de toutes les recettes dans un tableau
   allRecipesIngredients = []
   data.forEach( recipe => recipe.ingredients.forEach( ingredient => allRecipesIngredients.push( ingredient.ingredient ) ) )
@@ -71,7 +69,6 @@ function getSortChoice ( data )
 
   function getSortForm ( typeOfSorting, sortItem, currentTexte )
   {
-    console.log("typeOfSorting : ", typeOfSorting)
     const sorType = (element) => element.type===currentTexte
     const currentSort = typeOfSorting.findIndex( sorType )
     
@@ -225,14 +222,10 @@ function getSortChoice ( data )
     {
       function selectChoice ()
       {
-        // TODO récupérer le type de tri
-        // TODO récupérer la class
         const choiceSelected = choice.textContent 
-        console.log( "choiceSelected : ", choiceSelected ) //*
         const sortItem = choice.closest( ".sort__item" )
         const sortChoiceButton = sortItem.firstChild
         const sortChoice = sortChoiceButton.textContent
-        console.log( "sortChoice : ", sortChoice )
 
         getTag (
           choiceSelected,
