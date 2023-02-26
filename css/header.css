@@ -25,6 +25,7 @@
 .header__containerSearch{
   margin-top: 17px;
   margin-bottom: 25px;
+  border-radius: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,6 +46,8 @@
 .search__input:focus{
   outline: none;
 }
+
+/* TODO boder orange du form de recherches quant input de recherche focus */
 
 .search__label{
   height: 100%;

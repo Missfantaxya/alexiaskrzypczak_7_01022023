@@ -5,6 +5,7 @@ recipes.forEach( recipe =>
   getRecipe(recipe)
 )
   
-getSortChoice(recipes)
+getSortChoice( recipes )
+
 
 

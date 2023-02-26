@@ -15,25 +15,9 @@
   padding: 23px 18px 24px 15px;
 }
 
-.sort__item--close>.sort__form{
-  display:none;
-}
-
-.sort__item--close>.sort__button{
-  display:flex;
-}
-
 .sort__item--open{
   min-width: 223px;
   width: auto;
-}
-
-.sort__item--open>.sort__form{
-  display:block;
-}
-
-.sort__item--open>.sort__button{
-  display:none;
 }
 
 .sort__arrow{
@@ -57,7 +41,6 @@
 }
 
 .sort__button{
-  /* display: flex; */
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
@@ -67,8 +50,16 @@
   font-size: 18px;
 }
 
-/* FIXME élargire la box selon le contenude .sort__choice*/
+.sort__item--close>.sort__button{
+  display:flex;
+}
+
+.sort__item--open>.sort__button{
+  display:none;
+}
+
 .sort__form{
+  display:block;
   border-radius: 5px; 
   max-height: 397px;
   font-size: 18px;
@@ -96,7 +87,18 @@
   width: 100%;
   border: none;
   background-color: transparent;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 700;
 }
+
+
+/* FIXME */
+.sort__inputText:focus{
+  border: none; 
+}
+
+/* FIXME .sort__inputText avec écriture */
 
 .sort__inputText::placeholder{
 color: rgba(255, 255, 255, 0.5);
@@ -107,8 +109,6 @@ font-size: 18px;
   display: grid;
   grid-auto-columns: max-content;
   grid-auto-rows: 1fr;
-  /* FIXME nb de ligne = nb de valeur jusqu'à max 10 => le faire en JS*/
-  grid-template-rows: repeat(10, 1fr);
   column-gap: 100px;
   row-gap: 10px;
   grid-auto-flow: column;
