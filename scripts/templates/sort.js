@@ -210,11 +210,9 @@ function getSortChoice ( data )
         } )
       }
     }
-    //~ WIP
-    // TODO
-    inputSort.addEventListener( "input", filtering )
-    //! ne fonctionne pas si on sélectionne le préremplissage de google
-    //! error quand le dropdown se ferme
+    if (inputSort){
+      inputSort.addEventListener( "input", filtering )
+    }
 
     //selection d'un tag
     const choices = document.querySelectorAll( ".choice__value" )
