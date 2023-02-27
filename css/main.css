@@ -1,6 +1,8 @@
 @import 'tag.css';
 @import 'sort.css';
 @import 'recipe.css';
+@import 'notFound.css';
+
 
 .recipes__list{
   margin-top: 25px;

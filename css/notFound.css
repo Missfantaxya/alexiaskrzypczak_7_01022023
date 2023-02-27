@@ -1,0 +1,7 @@
+.notFound{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin: 150px auto;
+  font-weight: 700;
+  font-size: 18px;
+}
