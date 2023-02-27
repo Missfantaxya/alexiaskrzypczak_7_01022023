@@ -2,10 +2,10 @@ function getRecipe( data )
 {
   const { description, ingredients, name, time } = data
 
-  const recipeList = document.querySelector( ".recipes__list" )
+  const recipesList = document.querySelector( ".recipes__list" )
   const recipeCard = document.createElement( "li" )
   recipeCard.className = "recipe__card"
-  recipeList.appendChild(recipeCard)
+  recipesList.appendChild(recipeCard)
   
   const recipePictureContainer = document.createElement( "div" )
   recipePictureContainer.className = "recipe__pictureContainer"

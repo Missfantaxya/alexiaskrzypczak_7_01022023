@@ -1,5 +1,5 @@
 
-console.log( "recipes : ", recipes )
+console.log( "recipes de index: ", recipes )
 
 recipes.forEach( recipe => 
   getRecipe(recipe)
