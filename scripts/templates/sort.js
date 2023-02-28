@@ -1,7 +1,7 @@
 function getSortChoice ( data )
-{
+{ 
   //récupérations de tous les ingrédients de toutes les recettes dans un tableau
-  allRecipesIngredients = []
+  var allRecipesIngredients = []
   data.forEach( recipe => recipe.ingredients.forEach( ingredient => allRecipesIngredients.push( ingredient.ingredient ) ) )
   
   // retrait des doublons du tableau des ingrédients
@@ -225,7 +225,7 @@ function getSortChoice ( data )
         const sortChoiceButton = sortItem.firstChild
         const sortChoice = sortChoiceButton.textContent
 
-        getTag (
+        getTag(
           choiceSelected,
           sortChoice )
       }
@@ -242,6 +242,8 @@ function getSortChoice ( data )
       }
       choice.addEventListener( "click", closeForm )
     } )
+
+    // TODO retirer les item déjà en tag ??
   
     const formButtons = document.querySelectorAll( ".form__button" )
     formButtons.forEach( formButton =>
@@ -258,7 +260,6 @@ function getSortChoice ( data )
         }
       }
       formButton.addEventListener( "click", closeFormSort )
-      //! error console mais fonctionne
     } )
   } )
   observer.observe( toObserveSort, { subtree: true, childList: true } )

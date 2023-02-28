@@ -11,50 +11,58 @@ searchForm.addEventListener( "submit", search )
 
 function search ()
 {
-  const searchValue = SearchInput.value 
-  console.log( "searchValue : ", searchValue ) //*
-  const searchValueTrim = searchValue.trim()
-  console.log ("searchValueTrim.length : ",searchValueTrim.length) //*
-  if (searchValueTrim.length>2 || searchValueTrim.length===0){
-    var recipesSearched = []
-  for ( const recipe of recipes )
-  {
-    var recipeSearched = []
-    recipeSearched.push( recipe.name )
-    recipeSearched.push( recipe.description )
-    
-    for ( const ingredient of recipe.ingredients )
-    {
-      recipeSearched.push( ingredient.ingredient )
-    }
-    const stringRecipe = recipeSearched.join( " " )
-    const stringRecipeLowerCase = stringRecipe.toLowerCase()
-    const searchValueTrimToLowerCase = searchValueTrim.toLowerCase()
-    const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
-    if ( match )
-    {
-      recipesSearched.push(recipe)
-    }
-  }
-  console.log( "recipesSearched : ", recipesSearched ) //*
-  const recipesList = document.querySelector( ".recipes__list" )
-  if ( recipesSearched.length > 0 )
-  {
-  recipesList.innerHTML = ""
-  recipesSearched.forEach( recipe => 
-  getRecipe(recipe)
-    )
-  }
-  else
-  {
-    recipesList.innerHTML = "<div class='notFound'> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </div>"
-    }
-  }
-  else
-  {
-    console.log ("au moins 3 caractères")
-  }
-}
+  // recupération de la recherche entrée
+  const searchValue = SearchInput.value
 
+  // retrait des espaces en début et fin de recherche
+  const searchValueTrim = searchValue.trim()
+
+  // validation du champs de recherche
+  if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )
+  {
+    var recipesSearched = []
+    for ( const recipe of recipes )
+    {
+      var recipeSearched = []
+      recipeSearched.push( recipe.name )
+      recipeSearched.push( recipe.description )
+      for ( const ingredient of recipe.ingredients )
+      {
+        recipeSearched.push( ingredient.ingredient )
+      }
+
+      // conversion du tableau en string
+      const stringRecipe = recipeSearched.join( " " )
+
+      //mise en forme en minuscule
+      const stringRecipeLowerCase = stringRecipe.toLowerCase()
+      const searchValueTrimToLowerCase = searchValueTrim.toLowerCase()
+
+      // vérirfication des correspondances dans les données
+      const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
+
+      // construction du tableau des recettes filtrées
+      if ( match )
+      {
+        recipesSearched.push( recipe )
+      }
+    }
+  
+    const recipesList = document.querySelector( ".recipes__list" )
+    if ( recipesSearched.length > 0 )
+    {
+      recipesList.innerHTML = ""
+      recipesSearched.forEach( recipe =>
+        getRecipe( recipe )
+      )
+    }
+    else
+    {
+      recipesList.innerHTML = "<div class='notFound'> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </div>"
+    }
+  }
+  console.log ("recipesSearched dans search : ", recipesSearched) //*
+  return recipesSearched //!
+}
 
 

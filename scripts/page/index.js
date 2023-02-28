@@ -1,5 +1,5 @@
 
-console.log( "recipes de index: ", recipes )
+// console.log( "recipes dans index: ", recipes ) //*
 
 recipes.forEach( recipe => 
   getRecipe(recipe)

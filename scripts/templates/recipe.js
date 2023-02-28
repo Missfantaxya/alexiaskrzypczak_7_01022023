@@ -92,5 +92,4 @@ function getRecipe( data )
   recipeProcess.className = "recipe__process"
   recipeProcess.textContent = description
   recipeDetailsContainer.appendChild(recipeProcess)
-
 }
