@@ -2,7 +2,15 @@ function getSortChoice ( data )
 { 
   //récupérations de tous les ingrédients de toutes les recettes dans un tableau
   var allRecipesIngredients = []
-  data.forEach( recipe => recipe.ingredients.forEach( ingredient => allRecipesIngredients.push( ingredient.ingredient ) ) )
+  data.forEach( recipe =>
+  {
+    recipe.ingredients.forEach( ingredient =>
+    {
+      //mise en forme en minuscule
+      const ingredientLowerCase = ingredient.ingredient.toLowerCase()
+      allRecipesIngredients.push(ingredientLowerCase)
+    })
+  } )
   
   // retrait des doublons du tableau des ingrédients
   const newSetIngredients = new Set( allRecipesIngredients )
@@ -10,7 +18,13 @@ function getSortChoice ( data )
   
   // Récupération de tous les appareils
   allRecipesAppliances = []
-  data.forEach( recipe => allRecipesAppliances.push( recipe.appliance ) )
+  data.forEach( recipe =>
+  {
+    //mise en forme en minuscule 
+    const appliance = recipe.appliance
+    const applianceLowerCase = appliance.toLowerCase()
+    allRecipesAppliances.push( applianceLowerCase)
+  } )
 
   // retrait des doublons du tableau des appareils
   const newSetAppliances = new Set( allRecipesAppliances )
@@ -18,7 +32,14 @@ function getSortChoice ( data )
 
   //récupérations de tous les ustensils de toutes les recettes dans un tableau
   allRecipesTools = []
-  data.forEach( recipe => recipe.ustensils.forEach( ustensil => allRecipesTools.push( ustensil ) ) )
+  data.forEach( recipe =>
+  {
+    recipe.ustensils.forEach( ustensil =>
+    {
+      const ustensilLoxerCase = ustensil.toLowerCase()
+      allRecipesTools.push( ustensilLoxerCase )
+    } )
+  } )
   
   // retrait des doublons du tableau des ustensils
   const newSetTools = new Set( allRecipesTools )
@@ -178,17 +199,17 @@ function getSortChoice ( data )
 
       // items du tri
       const currentItems = sortTypes[ currentSort ].items
+
       const newItems = []
       currentItems.forEach( item =>
       {
-        //FIXME
+        //FIXME pour "glam" montrera "glaçon, glace ..."
         if ( item.includes( inputValue ) )
-        //! sensible à la casse
-        //! attention pour "cocohdus" montrera "coco"
         {
           newItems.push(item)
         }
       } )
+
       
       // nouveau DOM avec le tri
       const newItemsLength = newItems.length

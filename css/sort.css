@@ -119,5 +119,6 @@ font-size: 18px;
   max-height: 341px;
   max-width: 667px;
   width: max-content;
+  text-transform: capitalize;
 }
 
