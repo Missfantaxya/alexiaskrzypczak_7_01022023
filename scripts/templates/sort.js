@@ -115,7 +115,7 @@ function getSortChoice ( data )
     sortInputText.id = `sort__inputText--${typeOfSorting[currentSort].class}`
     sortInputText.className = `sort__inputText sort__inputText--${typeOfSorting[currentSort].class}`
     sortInputText.name = `sort__inputText--${typeOfSorting[currentSort].class}`
-    sortInputText.type = "text"
+    sortInputText.type = "search"
     sortInputText.placeholder = `Rechercher un ${typeOfSorting[currentSort].placeholder}`
     sortField.appendChild( sortInputText
     )

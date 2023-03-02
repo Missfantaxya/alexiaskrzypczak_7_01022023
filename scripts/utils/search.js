@@ -6,8 +6,8 @@ function noSubmit ( evt )
 searchForm.addEventListener( "submit", noSubmit)
 
 const SearchInput = document.querySelector( ".search__input" )
-//TODO voir pour le mettre au changement de lettre au delà de 3 caractères
-searchForm.addEventListener( "submit", search )
+
+searchForm.addEventListener( "input", search )
 
 
 function search ()
