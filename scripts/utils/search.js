@@ -6,6 +6,7 @@ function noSubmit ( evt )
 searchForm.addEventListener( "submit", noSubmit)
 
 const SearchInput = document.querySelector( ".search__input" )
+//TODO voir pour le mettre au changement de lettre au delà de 3 caractères
 searchForm.addEventListener( "submit", search )
 
 
@@ -14,8 +15,13 @@ function search ()
   // recupération de la recherche entrée
   const searchValue = SearchInput.value
 
+    //TODO mettre en minuscule
+  const searchValueLowerCase = searchValue.toLowerCase()
+
   // retrait des espaces en début et fin de recherche
-  const searchValueTrim = searchValue.trim()
+  const searchValueTrim = searchValueLowerCase.trim()
+
+
 
   // validation du champs de recherche
   if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )

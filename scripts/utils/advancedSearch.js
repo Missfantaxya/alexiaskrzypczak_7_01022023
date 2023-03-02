@@ -1,10 +1,10 @@
 function advancedSearch ()
 {
   // console.log("recipes dans advancedSearch : ", recipes) //*
-  const tagsCard = document.querySelectorAll( ".tag__item" )
+  const tagsCards = document.querySelectorAll( ".tag__item" )
 
   var tags = []
-  tagsCard.forEach( tag =>
+  tagsCards.forEach( tag =>
   {
     tags.push(tag.textContent)
   } )
@@ -25,10 +25,9 @@ function advancedSearch ()
       {
         recipeSearched.push(ustensil)
       } )
-      // console.log("recipeSearched sans recherche : ", recipeSearched) //*
       const stringRecipe = recipeSearched.join( " " )
-
-      const match = stringRecipe.includes( stringTags )
+      const stringRecipeLowerCase = stringRecipe.toLowerCase()
+      const match = stringRecipeLowerCase.includes( stringTags )
       if ( match )
       {
         recipesSearched.push(recipe)

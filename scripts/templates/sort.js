@@ -189,6 +189,7 @@ function getSortChoice ( data )
     {
       const sortForm = inputSort.closest(".sort__form")
       var inputValue = inputSort.value
+      const inputValueLowerCase = inputValue.toLowerCase()
       var sortItem = inputSort.closest( ".sort__item" )
       var sortButton = sortItem.firstChild
       const currentTexte = sortButton.textContent
@@ -204,7 +205,7 @@ function getSortChoice ( data )
       currentItems.forEach( item =>
       {
         //FIXME pour "glam" montrera "glaçon, glace ..."
-        if ( item.includes( inputValue ) )
+        if ( item.includes( inputValueLowerCase ) )
         {
           newItems.push(item)
         }
