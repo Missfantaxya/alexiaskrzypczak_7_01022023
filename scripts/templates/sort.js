@@ -236,7 +236,12 @@ function getSortChoice ( data )
       inputSort.addEventListener( "input", filtering )
     }
 
-    //selection d'un tag
+    //selection d'un tag 
+
+    //TODO éviter la génération de tag doublons 
+    //création d'un tableau qui regroupe les tag
+    // const selectedChoices = [] //~
+
     const choices = document.querySelectorAll( ".choice__value" )
     choices.forEach( choice =>
     {
@@ -246,13 +251,16 @@ function getSortChoice ( data )
         const sortItem = choice.closest( ".sort__item" )
         const sortChoiceButton = sortItem.firstChild
         const sortChoice = sortChoiceButton.textContent
-
+        // console.log("choiceSelected : ", choiceSelected) //*
+        // selectedChoices.push( choiceSelected )
+        // console.log( "selectedChoices 1: ", selectedChoices ) //*
         getTag(
           choiceSelected,
           sortChoice )
       }
       choice.addEventListener( "click", selectChoice )
       
+      // console.log( "selectedChoices 2: ", selectedChoices )//!
 
       function closeForm ()
       {

@@ -16,6 +16,13 @@ function getTag (
     choiceClass = "tools"
   }
 
+    // FIXME empêcher la génération de tag identiques
+  // vérification du tag --------------
+  // TODO 
+  // récupérer dans les DOM les text.content des tag
+  // les comparer avec choiceSelected
+  // si inexistant alors création d'un nouveau tag
+  
   // construction du DOM---------------
   const headerContainerTag = document.querySelector( ".header__containerTag" )
 
@@ -38,8 +45,6 @@ function getTag (
   tagPicture.src = "../../assets/cross.svg"
   tagPicture.alt = "cross"
   tagButton.appendChild( tagPicture )
-
-  // TODO empêcher la génération de tag identiques
 
   advancedSearch ()
 
