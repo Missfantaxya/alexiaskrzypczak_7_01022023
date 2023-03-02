@@ -16,15 +16,23 @@ function getTag (
     choiceClass = "tools"
   }
 
-    // FIXME empêcher la génération de tag identiques
   // vérification du tag --------------
-  // TODO 
-  // récupérer dans les DOM les text.content des tag
-  // les comparer avec choiceSelected
-  // si inexistant alors création d'un nouveau tag
+  const tagsDom = document.querySelectorAll( ".tag__item" )
+  const tagsExist = []
+  // récupération du contenu des tags existants
+  if ( tagsDom.length > 0 )
+  {
+    tagsDom.forEach( tag => {
+      const tagContent = tag.textContent
+      tagsExist.push(tagContent)
+    } )
+  }
+  // comparaison avec choiceSelected
+  const oldTag = tagsExist.includes( choiceSelected )
   
-  // construction du DOM---------------
-  const headerContainerTag = document.querySelector( ".header__containerTag" )
+   // construction du DOMsi le tag n'existe pas -----------
+  if (!oldTag)
+  {const headerContainerTag = document.querySelector( ".header__containerTag" )
 
   const tagList = document.createElement( "ul" )
   tagList.className = `tag__list tag__list--${ choiceClass }`
@@ -44,7 +52,7 @@ function getTag (
   tagPicture.className = "tag__picture"
   tagPicture.src = "../../assets/cross.svg"
   tagPicture.alt = "cross"
-  tagButton.appendChild( tagPicture )
+  tagButton.appendChild( tagPicture )}
 
   advancedSearch ()
 
