@@ -1,4 +1,6 @@
+//TODO faire une réinitialisation des recettes affichées quand recherche vidée ou changée (s'accumule si plusieurs recherches et ne se reinitailse pas si slisk qur la croix  )
 const searchForm = document.querySelector( ".header__containerSearch" )
+
 function noSubmit ( evt )
 {
   evt.preventDefault()
@@ -7,7 +9,8 @@ searchForm.addEventListener( "submit", noSubmit)
 
 const SearchInput = document.querySelector( ".search__input" )
 
-searchForm.addEventListener( "input", search )
+// searchForm.addEventListener( "input", search )
+searchForm.addEventListener( "submit", search )
 
 var recipesSearched = []
 let newRecipesSearch = []
@@ -31,11 +34,12 @@ function search ()
     {
       var recipeSearched = []
       recipeSearched.push( recipe.name )
-      recipeSearched.push( recipe.description )
       for ( const ingredient of recipe.ingredients )
       {
         recipeSearched.push( ingredient.ingredient )
       }
+      recipeSearched.push( recipe.description )
+      
 
       // conversion du tableau en string
       const stringRecipe = recipeSearched.join( " " )
