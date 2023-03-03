@@ -1,49 +1,69 @@
 function getSortChoice ( data )
 { 
-  //récupérations de tous les ingrédients de toutes les recettes dans un tableau
-  var allRecipesIngredients = []
-  data.forEach( recipe =>
-  {
-    recipe.ingredients.forEach( ingredient =>
-    {
-      //mise en forme en minuscule
-      const ingredientLowerCase = ingredient.ingredient.toLowerCase()
-      allRecipesIngredients.push(ingredientLowerCase)
-    })
-  } )
+  // TODO mettre à jour les choiceValue avec seulement ce qui est dans les recettes filtrées 
   
-  // retrait des doublons du tableau des ingrédients
-  const newSetIngredients = new Set( allRecipesIngredients )
-  const allIngredients = [ ...newSetIngredients ]
-  
-  // Récupération de tous les appareils
-  allRecipesAppliances = []
-  data.forEach( recipe =>
+  function setIngredients (data)
   {
-    //mise en forme en minuscule 
-    const appliance = recipe.appliance
-    const applianceLowerCase = appliance.toLowerCase()
-    allRecipesAppliances.push( applianceLowerCase)
-  } )
-
-  // retrait des doublons du tableau des appareils
-  const newSetAppliances = new Set( allRecipesAppliances )
-  const allAppliances = [ ...newSetAppliances ]
-
-  //récupérations de tous les ustensils de toutes les recettes dans un tableau
-  allRecipesTools = []
-  data.forEach( recipe =>
-  {
-    recipe.ustensils.forEach( ustensil =>
+    // récupérations de tous les ingrédients de toutes les recettes dans un tableau
+    var allRecipesIngredients = []
+    data.forEach( recipe =>
     {
-      const ustensilLoxerCase = ustensil.toLowerCase()
-      allRecipesTools.push( ustensilLoxerCase )
+      recipe.ingredients.forEach( ingredient =>
+      {
+        //mise en forme en minuscule
+        const ingredientLowerCase = ingredient.ingredient.toLowerCase()
+        allRecipesIngredients.push(ingredientLowerCase)
+      })
     } )
-  } )
+    
+    // retrait des doublons du tableau des ingrédients
+    const newSetIngredients = new Set( allRecipesIngredients )
+    const allIngredients = [ ...newSetIngredients ]
+    // pour facilité les cas d'utilisation mais n'est pas sur la maquette
+    // allIngredients.sort() //*
+    return allIngredients
+  }
   
-  // retrait des doublons du tableau des ustensils
-  const newSetTools = new Set( allRecipesTools )
-  const allTools = [ ...newSetTools ]
+  function setAppliances (data)
+  {
+    // Récupération de tous les appareils
+    allRecipesAppliances = []
+    data.forEach( recipe =>
+    {
+      //mise en forme en minuscule 
+      const appliance = recipe.appliance
+      const applianceLowerCase = appliance.toLowerCase()
+      allRecipesAppliances.push( applianceLowerCase)
+    } )
+
+    // retrait des doublons du tableau des appareils
+    const newSetAppliances = new Set( allRecipesAppliances )
+    const allAppliances = [ ...newSetAppliances ]
+    return allAppliances
+  }
+
+  function setTools ( data )
+  {
+    //récupérations de tous les ustensils de toutes les recettes dans un tableau
+    allRecipesTools = []
+    data.forEach( recipe =>
+    {
+      recipe.ustensils.forEach( ustensil =>
+      {
+        const ustensilLoxerCase = ustensil.toLowerCase()
+        allRecipesTools.push( ustensilLoxerCase )
+      } )
+    } )
+    
+    // retrait des doublons du tableau des ustensils
+    const newSetTools = new Set( allRecipesTools )
+    const allTools = [ ...newSetTools ]
+    return allTools
+  }
+
+  var allIngredients = setIngredients( recipes )
+  var allAppliances = setAppliances( recipes )
+  var allTools = setTools(recipes)
 
   sortTypes = [
     {
@@ -164,6 +184,12 @@ function getSortChoice ( data )
       {
         sortItem.classList.remove( "sort__item--close" )
         sortItem.classList.add( "sort__item--open" )
+        if ( newRecipesSearch.length > 0 )
+        {
+          sortTypes[ 0 ].items = setIngredients( newRecipesSearch )
+          sortTypes[ 1 ].items = setAppliances( newRecipesSearch )
+          sortTypes[2].items = setTools( newRecipesSearch )
+        }
         getSortForm( sortTypes, sortItem, currentTexte )
         formButton = document.querySelector( ".form__button" )
         const inputSort = document.querySelector( ".sort__inputText" )
@@ -215,7 +241,6 @@ function getSortChoice ( data )
         }
       } )
 
-       // TODO mettre à jour les choiceValue avec seulement ce qui est dans les recettes filtrées
       // nouveau DOM avec le tri
       const newItemsLength = newItems.length
       if ( newItemsLength > 0 )
