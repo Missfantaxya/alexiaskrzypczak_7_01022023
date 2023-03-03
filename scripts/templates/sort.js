@@ -187,9 +187,12 @@ function getSortChoice ( data )
 
     function filtering ()
     {
-      const sortForm = inputSort.closest(".sort__form")
+      const sortForm = inputSort.closest( ".sort__form" )
+      // récupération de la valeur de la recherche avancée
       var inputValue = inputSort.value
+      // Mise en forme en minuscules
       const inputValueLowerCase = inputValue.toLowerCase()
+      // Ciblage et récupération de la valeur du type de tri
       var sortItem = inputSort.closest( ".sort__item" )
       var sortButton = sortItem.firstChild
       const currentTexte = sortButton.textContent
@@ -202,6 +205,7 @@ function getSortChoice ( data )
       const currentItems = sortTypes[ currentSort ].items
 
       const newItems = []
+      // vérification des correspondances
       currentItems.forEach( item =>
       {
         //FIXME pour "glam" montrera "glaçon, glace ..."
@@ -211,7 +215,7 @@ function getSortChoice ( data )
         }
       } )
 
-      
+       // TODO mettre à jour les choiceValue avec seulement ce qui est dans les recettes filtrées
       // nouveau DOM avec le tri
       const newItemsLength = newItems.length
       if ( newItemsLength > 0 )
@@ -236,12 +240,6 @@ function getSortChoice ( data )
       inputSort.addEventListener( "input", filtering )
     }
 
-    //selection d'un tag 
-
-    //TODO éviter la génération de tag doublons 
-    //création d'un tableau qui regroupe les tag
-    // const selectedChoices = [] //~
-
     const choices = document.querySelectorAll( ".choice__value" )
     choices.forEach( choice =>
     {
@@ -251,16 +249,11 @@ function getSortChoice ( data )
         const sortItem = choice.closest( ".sort__item" )
         const sortChoiceButton = sortItem.firstChild
         const sortChoice = sortChoiceButton.textContent
-        // console.log("choiceSelected : ", choiceSelected) //*
-        // selectedChoices.push( choiceSelected )
-        // console.log( "selectedChoices 1: ", selectedChoices ) //*
         getTag(
           choiceSelected,
           sortChoice )
       }
       choice.addEventListener( "click", selectChoice )
-      
-      // console.log( "selectedChoices 2: ", selectedChoices )//!
 
       function closeForm ()
       {

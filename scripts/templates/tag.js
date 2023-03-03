@@ -53,8 +53,8 @@ function getTag (
   tagPicture.src = "../../assets/cross.svg"
   tagPicture.alt = "cross"
   tagButton.appendChild( tagPicture )}
-
-  advancedSearch ()
+  
+  advancedSearch (newRecipesSearch)
 
   //événements----------------------
 

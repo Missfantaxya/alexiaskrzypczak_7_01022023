@@ -1,6 +1,8 @@
 function advancedSearch ()
 {
   // console.log("recipes dans advancedSearch : ", recipes) //*
+    console.log ("newRecipesSearch dans adsancedSearch : ", newRecipesSearch) 
+  
   const tagsCards = document.querySelectorAll( ".tag__item" )
 
   var tags = []
@@ -12,37 +14,52 @@ function advancedSearch ()
   {
     const stringTags = tags.join( " " )
     // s'il n'y a pas eu de recherche 
-    var recipesSearched = []
-    recipes.forEach( recipe =>
-    {
-      var recipeSearched = []
-      recipeSearched.push( recipe.appliance )
-      recipe.ingredients.forEach( ingredient =>
-      {
-        recipeSearched.push(ingredient.ingredient)
-      } )
-      recipe.ustensils.forEach( ustensil =>
-      {
-        recipeSearched.push(ustensil)
-      } )
-      const stringRecipe = recipeSearched.join( " " )
-      const stringRecipeLowerCase = stringRecipe.toLowerCase()
-      const match = stringRecipeLowerCase.includes( stringTags )
-      if ( match )
-      {
-        recipesSearched.push(recipe)
-      }
-      const recipesList = document.querySelector( ".recipes__list" )
-      recipesList.innerHTML = " "
-      recipesSearched.forEach( recipe =>
-      {
-        getRecipe(recipe)
-      } )
-    } )
+    var recipesAdvancedSearched = []
+    const search = newRecipesSearch.length > 0
+    console.log( "search : ", search ) //*
     
-    // si il y a eu une recherhe
-    //TODO récupérer [recipesSearched] 
-    // console.log("recipesSearched dans advancedSearch : ", recipesSearched) //!
+    // ---------------------------------
+    function sortRecipe (recipesToSort)
+    {
+      recipesToSort.forEach( recipe =>
+      {
+        var recipeSearched = []
+        recipeSearched.push( recipe.appliance )
+        recipe.ingredients.forEach( ingredient =>
+        {
+          recipeSearched.push(ingredient.ingredient)
+        } )
+        recipe.ustensils.forEach( ustensil =>
+        {
+          recipeSearched.push(ustensil)
+        } )
+        const stringRecipe = recipeSearched.join( " " )
+        const stringRecipeLowerCase = stringRecipe.toLowerCase()
+        const match = stringRecipeLowerCase.includes( stringTags )
+        if ( match )
+        {
+          recipesAdvancedSearched.push(recipe)
+        }
+        const recipesList = document.querySelector( ".recipes__list" )
+        recipesList.innerHTML = " "
+        recipesAdvancedSearched.forEach( recipe =>
+        {
+          getRecipe(recipe)
+        } )
+      } )
+    }
+    //------------------------------------
+
+    if (!search)
+    {
+      sortRecipe (recipes)
+    }
+    else
+    {
+      console.log( "en cours WIP" )
+      sortRecipe(newRecipesSearch)
+    }
+
   }
   else
   {

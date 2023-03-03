@@ -9,24 +9,24 @@ const SearchInput = document.querySelector( ".search__input" )
 
 searchForm.addEventListener( "input", search )
 
-
+var recipesSearched = []
+let newRecipesSearch = []
 function search ()
 {
   // recupération de la recherche entrée
   const searchValue = SearchInput.value
 
-    //TODO mettre en minuscule
+  // Mise en forme en minuscules
   const searchValueLowerCase = searchValue.toLowerCase()
 
   // retrait des espaces en début et fin de recherche
   const searchValueTrim = searchValueLowerCase.trim()
 
 
-
+  
   // validation du champs de recherche
   if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )
   {
-    var recipesSearched = []
     for ( const recipe of recipes )
     {
       var recipeSearched = []
@@ -53,12 +53,16 @@ function search ()
         recipesSearched.push( recipe )
       }
     }
+
+    // Retrait des doublons du tableau
+    const setRecipesSearch = new Set( recipesSearched )
+    newRecipesSearch = [ ...setRecipesSearch ]
   
     const recipesList = document.querySelector( ".recipes__list" )
-    if ( recipesSearched.length > 0 )
+    if ( newRecipesSearch.length > 0 )
     {
       recipesList.innerHTML = ""
-      recipesSearched.forEach( recipe =>
+      newRecipesSearch.forEach( recipe =>
         getRecipe( recipe )
       )
     }
@@ -67,8 +71,6 @@ function search ()
       recipesList.innerHTML = "<div class='notFound'> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </div>"
     }
   }
-  console.log ("recipesSearched dans search : ", recipesSearched) //*
-  return recipesSearched //!
 }
 
 
