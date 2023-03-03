@@ -7,6 +7,8 @@ console.log ("newRecipesSearch 1 : ", newRecipesSearch)
 
 // FIXME remet après un premier tri les 50 recettes au 2ème tag avec ou sans recherche
 
+// TODO voir où est lancer advancedSearch()
+
 function advancedSearch ()
 {
   newRecipes = ( newRecipesSearch.length > 0 ? newRecipesSearch : recipes )
