@@ -67,8 +67,9 @@ function getTag (
     {
       currentTag.remove()
     }
+    // FIXME mettre à jour le [recipesSearch] quand closeTag()
     tagButton.addEventListener( "click", closeTag )
     // FIXME appel advancedSearch même sans suppression de tag
-    tagButton.addEventListener( "click", advancedSearch) //~
+    tagButton.addEventListener( "click", advancedSearch)
   } )
 }
