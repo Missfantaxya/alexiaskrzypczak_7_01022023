@@ -18,8 +18,7 @@ function advancedSearch ()
     const search = newRecipesSearch.length > 0
     console.log( "search : ", search ) //*
     
-    // ---------------------------------
-    function sortRecipe (recipesToSort)
+    function sortRecipes (recipesToSort)
     {
       recipesToSort.forEach( recipe =>
       {
@@ -48,16 +47,14 @@ function advancedSearch ()
         } )
       } )
     }
-    //------------------------------------
 
     if (!search)
     {
-      sortRecipe (recipes)
+      sortRecipes (recipes)
     }
     else
     {
-      console.log( "en cours WIP" )
-      sortRecipe(newRecipesSearch)
+      sortRecipes(newRecipesSearch)
     }
 
   }
