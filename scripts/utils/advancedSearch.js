@@ -7,7 +7,6 @@ console.log ("newRecipesSearch 1 : ", newRecipesSearch)
 
 // FIXME remet après un premier tri les 50 recettes au 2ème tag avec ou sans recherche
 
-// TODO voir où est lancer advancedSearch()
 
 function advancedSearch ()
 {
@@ -23,9 +22,9 @@ function advancedSearch ()
   const newSetTags = new Set( tags )
   const allTags = [ ...newSetTags ]
   console.log ("allTags : ", allTags) //*
-  if ( allTags.length === 1 )
+  if ( allTags.length > 0 )
   {
-    const stringTags = allTags.join( " " )
+    const stringTags = allTags.join( " " ) //~ ne pas joindre
     console.log( "stringTags : ", stringTags )//*
     console.log("newRecipes 2 : ", newRecipes)
     console.log("newRecipesSearch : ", newRecipesSearch) //*
@@ -46,7 +45,8 @@ function advancedSearch ()
         } )
         const stringRecipe = inRecipeSearched.join( " " )
         const stringRecipeLowerCase = stringRecipe.toLowerCase()
-        const match = stringRecipeLowerCase.includes( stringTags )
+        const match = stringRecipeLowerCase.includes( allTags ) //~ attention doit avoir TOUS les tags en match boucler allTags puis boucler [newRecipesWithTagsPrécédents] 
+        console.log("match : ", match) //*
         if ( match )
         {
           recipesAdvancedSearched.push( recipe )
