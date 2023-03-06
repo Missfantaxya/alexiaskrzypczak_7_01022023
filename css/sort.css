@@ -95,7 +95,7 @@
 
 /* FIXME */
 .sort__inputText:focus{
-  border: none; 
+  outline: none;
 }
 
 /* FIXME .sort__inputText avec écriture */
