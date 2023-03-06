@@ -1,35 +1,31 @@
-//TODO faire une réinitialisation des recettes affichées quand recherche vidée ou changée (s'accumule si plusieurs recherches et ne se reinitailse pas si slisk qur la croix  )
 const searchForm = document.querySelector( ".header__containerSearch" )
+const searchInput = document.querySelector( ".search__input" )
+const searchValue = searchInput.value
+
+var recipesSearched = []
+let newRecipesSearch = []
 
 function noSubmit ( evt )
 {
   evt.preventDefault()
 }
-searchForm.addEventListener( "submit", noSubmit)
 
-const SearchInput = document.querySelector( ".search__input" )
-
-// searchForm.addEventListener( "input", search )
-searchForm.addEventListener( "submit", search )
-
-var recipesSearched = []
-let newRecipesSearch = []
+// fonction de tri des recettes
 function search ()
 {
   // recupération de la recherche entrée
-  const searchValue = SearchInput.value
+  const searchValue = searchInput.value
 
   // Mise en forme en minuscules
   const searchValueLowerCase = searchValue.toLowerCase()
 
   // retrait des espaces en début et fin de recherche
   const searchValueTrim = searchValueLowerCase.trim()
-
-
   
   // validation du champs de recherche
   if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )
   {
+    recipesSearched = []
     for ( const recipe of recipes )
     {
       var recipeSearched = []
@@ -65,16 +61,66 @@ function search ()
     const recipesList = document.querySelector( ".recipes__list" )
     if ( newRecipesSearch.length > 0 )
     {
-      recipesList.innerHTML = ""
+      recipesList.innerHTML = " "
       newRecipesSearch.forEach( recipe =>
         getRecipe( recipe )
       )
     }
     else
     {
+      recipesList.innerHTML = " "
       recipesList.innerHTML = "<div class='notFound'> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </div>"
     }
   }
+  
+  //fonction de création du bouton d'effacement du formulaire
+  function getDeleteInputButton ()
+  {
+    console.log( "searchValue get: ", searchValue )
+    const deleteButton = document.querySelector( ".input__button" )
+    if ( !deleteButton )
+    {
+      const deleteInputButton = document.createElement( "button" )
+      deleteInputButton.className = "input__button"
+      deleteInputButton.type = "button"
+      searchForm.appendChild( deleteInputButton )
+
+      const crossDeleteInput = document.createElement( "img" )
+      crossDeleteInput.className = "input__cross"
+      crossDeleteInput.src = "../../assets/cross-input.svg"
+      crossDeleteInput.alt = "cross"
+      deleteInputButton.appendChild( crossDeleteInput )
+    }
+  }
+
+  // fonction d'effacement de l'input
+  function eraseInput ()
+  {
+    searchForm.reset()
+    removeDeleteInputButton()
+  }
+
+  // fonction de suppression du boutton d'effacement
+  function removeDeleteInputButton ()
+  {
+    const deleteButton = document.querySelector( ".input__button" )
+    deleteButton.remove() //~erroe console
+  }
+  
+  getDeleteInputButton()
+
+  const deleteButton = document.querySelector( ".input__button" )
+  if ( deleteButton && searchValue.length === 0 )
+  {
+    removeDeleteInputButton()
+  }
+  
+  if ( deleteButton )
+  {
+    deleteButton.addEventListener( "click", eraseInput )
+  }
 }
 
-
+searchForm.addEventListener( "input", search )
+searchForm.addEventListener( "submit", search )
+searchForm.addEventListener( "submit", noSubmit)

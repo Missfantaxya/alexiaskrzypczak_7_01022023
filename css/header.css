@@ -47,7 +47,14 @@
   outline: none;
 }
 
-/* TODO boder orange du form de recherches quant input de recherche focus */
+.input__button{
+  position: relative;
+  top: 20px;
+  right: 93px;
+  width: 30px;
+  height: 30px;
+  outline: none;
+}
 
 .search__label{
   height: 100%;
