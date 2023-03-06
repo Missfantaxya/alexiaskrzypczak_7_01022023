@@ -30,7 +30,7 @@ function getTag (
   // comparaison avec choiceSelected
   const oldTag = tagsExist.includes( choiceSelected )
   
-   // construction du DOMsi le tag n'existe pas -----------
+   // construction du DOM si le tag n'existe pas -----------
   if (!oldTag)
   {const headerContainerTag = document.querySelector( ".header__containerTag" )
 
@@ -50,7 +50,7 @@ function getTag (
   
   const tagPicture = document.createElement( "img" )
   tagPicture.className = "tag__picture"
-  tagPicture.src = "../../assets/cross.svg"
+  tagPicture.src = "../../assets/cross-tag.svg"
   tagPicture.alt = "cross"
   tagButton.appendChild( tagPicture )}
   

@@ -291,7 +291,7 @@ function getSortChoice ( data )
       choice.addEventListener( "click", closeForm )
     } )
 
-    // TODO retirer les item déjà en tag ??
+    // TODO retirer les item déjà en tag ?? !!
   
     const formButtons = document.querySelectorAll( ".form__button" )
     formButtons.forEach( formButton =>
