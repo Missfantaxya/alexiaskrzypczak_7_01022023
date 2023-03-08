@@ -1,6 +1,6 @@
 function getSortChoice ( data )
 { 
-  // TODO mettre à jour les choiceValue avec seulement ce qui est dans les recettes filtrées 
+  // TODO mettre à jour les choiceValue avec seulement ce qui est dansaprès tag
   
   function setIngredients (data)
   {
@@ -234,7 +234,6 @@ function getSortChoice ( data )
       // vérification des correspondances
       currentItems.forEach( item =>
       {
-        //FIXME pour "glam" montrera "glaçon, glace ..."
         if ( item.includes( inputValueLowerCase ) )
         {
           newItems.push(item)
@@ -291,8 +290,6 @@ function getSortChoice ( data )
       choice.addEventListener( "click", closeForm )
     } )
 
-    // TODO retirer les item déjà en tag ?? !!
-  
     const formButtons = document.querySelectorAll( ".form__button" )
     formButtons.forEach( formButton =>
     {
