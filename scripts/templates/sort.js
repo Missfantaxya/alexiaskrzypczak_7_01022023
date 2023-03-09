@@ -1,6 +1,7 @@
 function getSortChoice ( data )
 { 
-  // TODO mettre à jour les choiceValue avec seulement ce qui est dansaprès tag
+  // TODO mettre à jour les choiceValue 
+  // TODO suite avec seulement ce qui est dans la recette après tag
   
   function setIngredients (data)
   {

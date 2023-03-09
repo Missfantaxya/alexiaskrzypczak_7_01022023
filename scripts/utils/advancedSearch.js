@@ -1,10 +1,14 @@
 var tags = [] 
 var newRecipes = [] 
-var recipesToSort = [] 
+var recipesToSort = []
 
+//FIXME recipes === recipesToSort 
+//FIXME (suite) quand on ferme un tag
 function advancedSearch ()
 {
+  console.log("recipes 0 : ", recipes) //! avec les lignes empty après closeTag
   newRecipes = ( newRecipesSearch.length > 0 ? newRecipesSearch : recipes )
+  console.log("newRecipes 1 : ", newRecipes)
   const tagsCards = document.querySelectorAll( ".tag__item" )
   tagsCards.forEach( tag =>
   {
@@ -17,7 +21,7 @@ function advancedSearch ()
 
   if ( allTags.length > 0 )
   {
-    function sortRecipes (recipesToSort)
+    function sortRecipes ()
     {
       recipesToSort.forEach( recipe =>
       {
@@ -52,9 +56,6 @@ function advancedSearch ()
           
           if ( !matchTag )
           {
-            // // Supression de la recette du tableau
-            // recipesToSort.splice( recipeId, 1 )
-
             // Supression de la recette du tableau en la remplaçant par undefined 
             delete recipesToSort[recipeId] 
           }
@@ -72,6 +73,7 @@ function advancedSearch ()
 
     if ( !search )
     {
+       console.log("recipes 1 : ", recipes) //! avec empty après closeTag
       recipesToSort = recipes
     }
     else

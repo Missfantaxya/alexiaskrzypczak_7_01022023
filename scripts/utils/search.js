@@ -76,7 +76,6 @@ function search ()
   //fonction de création du bouton d'effacement du formulaire
   function getDeleteInputButton ()
   {
-    console.log( "searchValue get: ", searchValue )
     const deleteButton = document.querySelector( ".input__button" )
     if ( !deleteButton )
     {
@@ -104,7 +103,8 @@ function search ()
   function removeDeleteInputButton ()
   {
     const deleteButton = document.querySelector( ".input__button" )
-    deleteButton.remove() //~erroe console
+    deleteButton.remove()
+    // FIXME erreur console : cannot read property of null (reading 'remove')
   }
   
   getDeleteInputButton()

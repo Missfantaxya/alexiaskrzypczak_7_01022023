@@ -53,8 +53,8 @@ function getTag (
   tagPicture.src = "../../assets/cross-tag.svg"
   tagPicture.alt = "cross"
   tagButton.appendChild( tagPicture )}
-  
-  advancedSearch (newRecipesSearch)
+
+  advancedSearch ()
 
   //événements----------------------
 
@@ -66,10 +66,10 @@ function getTag (
     function closeTag ()
     {
       currentTag.remove()
+      console.log("recipes de closeTag: ", recipes)
+      advancedSearch(recipes)
     }
-    // FIXME mettre à jour le [recipesSearch] quand closeTag()
+    
     tagButton.addEventListener( "click", closeTag )
-    // FIXME appel advancedSearch même sans suppression de tag
-    tagButton.addEventListener( "click", advancedSearch)
   } )
 }
