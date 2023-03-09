@@ -1,80 +1,84 @@
-var recipesAdvancedSearched = []
-var tags = []
-var newRecipes = []
-console.log ("newRecipesSearch 1 : ", newRecipesSearch)
-
-// FIXME fonctionne que pour le 1er tag avec ou sans recherche
-
-// FIXME remet après un premier tri les 50 recettes au 2ème tag avec ou sans recherche
-
+var tags = [] 
+var newRecipes = [] 
+var recipesToSort = [] 
 
 function advancedSearch ()
 {
   newRecipes = ( newRecipesSearch.length > 0 ? newRecipesSearch : recipes )
-  console.log ("newRecipes 1 : ",newRecipes)
   const tagsCards = document.querySelectorAll( ".tag__item" )
-  console.log ("newRecipesSearch 2 : ", newRecipesSearch)
   tagsCards.forEach( tag =>
   {
     const tagText =  tag.textContent
     tags.push( tagText )
   } )
+  // Suppression des doublons
   const newSetTags = new Set( tags )
   const allTags = [ ...newSetTags ]
-  console.log ("allTags : ", allTags) //*
+
   if ( allTags.length > 0 )
   {
-    const stringTags = allTags.join( " " ) //~ ne pas joindre
-    console.log( "stringTags : ", stringTags )//*
-    console.log("newRecipes 2 : ", newRecipes)
-    console.log("newRecipesSearch : ", newRecipesSearch) //*
-    
     function sortRecipes (recipesToSort)
     {
       recipesToSort.forEach( recipe =>
       {
+        // tableau vide pour chaque recette bouclée
         var inRecipeSearched = []
+
+        // mise des appareils de la recette dans le tableau de la recette
         inRecipeSearched.push( recipe.appliance )
+
+        // mise des ingrédients de la recette dans le tableau de la recette
         recipe.ingredients.forEach( ingredient =>
         {
           inRecipeSearched.push(ingredient.ingredient)
         } )
+
+        // mise des ustensils de la recette dans le tableau de la recette
         recipe.ustensils.forEach( ustensil =>
         {
           inRecipeSearched.push(ustensil)
         } )
+
+        // conversion du tableau de la recette en string
         const stringRecipe = inRecipeSearched.join( " " )
+
+        // mise en forme de la string de la recette en minuscules
         const stringRecipeLowerCase = stringRecipe.toLowerCase()
-        const match = stringRecipeLowerCase.includes( allTags ) //~ attention doit avoir TOUS les tags en match boucler allTags puis boucler [newRecipesWithTagsPrécédents] 
-        console.log("match : ", match) //*
-        if ( match )
+      
+        allTags.forEach( tag =>
         {
-          recipesAdvancedSearched.push( recipe )
-          const newSetRecipes = new Set( recipesAdvancedSearched )
-          newRecipes = [ ...newSetRecipes ]
-        }
+          const matchTag = stringRecipeLowerCase.includes( tag )
+          const recipeId = recipesToSort.indexOf( recipe )
+          
+          if ( !matchTag )
+          {
+            // // Supression de la recette du tableau
+            // recipesToSort.splice( recipeId, 1 )
+
+            // Supression de la recette du tableau en la remplaçant par undefined 
+            delete recipesToSort[recipeId] 
+          }
+        } )
       } )
-      // const newSetRecipes = new Set( recipesAdvancedSearched )
-      // newRecipes = [ ...newSetRecipes ]
-      console.log("newRecipes 3 : ", newRecipes)
+      
       const recipesList = document.querySelector( ".recipes__list" )
       recipesList.innerHTML = " "
-      newRecipes.forEach( recipe =>
+      recipesToSort.forEach( recipe =>
       {
         getRecipe(recipe)
       } )
     }
     const search = newRecipesSearch.length > 0
-    console.log( "search : ", search ) //*
 
     if ( !search )
     {
-      sortRecipes(newRecipes)
+      recipesToSort = recipes
     }
     else
     {
-      sortRecipes( newRecipesSearch )
+      recipesToSort = newRecipesSearch
     }
+    sortRecipes( recipesToSort )
   }
   else
   {
