@@ -99,12 +99,13 @@ function search ()
     removeDeleteInputButton()
   }
 
-  // fonction de suppression du boutton d'effacement
+  // fonction de suppression du boutton d'effacemment
   function removeDeleteInputButton ()
   {
     const deleteButton = document.querySelector( ".input__button" )
     deleteButton.remove()
     // FIXME erreur console : cannot read property of null (reading 'remove')
+    // https://developer.mozilla.org/fr/docs/Web/API/Element/remove
   }
   
   getDeleteInputButton()
