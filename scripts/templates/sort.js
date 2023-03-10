@@ -306,9 +306,9 @@ function getSortChoice ( data )
         }
       }
       formButton.addEventListener( "click", closeFormSort )
+
+      // TODO fermer le dropdown ouvert si un autre est ouvert
     } )
   } )
   observer.observe( toObserveSort, { subtree: true, childList: true } )
-
-  // TODO fermer le dropdown ouvert si un autre est ouvert
 }
