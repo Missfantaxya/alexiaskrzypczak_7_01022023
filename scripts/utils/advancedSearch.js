@@ -15,7 +15,7 @@ function advancedSearch ()
     const tagText =  tag.textContent
     tags.push( tagText )
   } )
-  console.log( "tags : ", tags ) //* 
+  
   recipesList.innerHTML = " "
   if ( tags.length > 0 )
   {
@@ -85,7 +85,6 @@ function advancedSearch ()
   }
   else
   {
-    console.log("recipes sans tag : ", recipes)
     recipes.forEach( recipe =>
       {
         getRecipe(recipe)
