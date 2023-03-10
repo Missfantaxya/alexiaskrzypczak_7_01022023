@@ -115,7 +115,7 @@ function getSortChoice ( data )
     const currentSort = typeOfSorting.findIndex( sorType )
     
     const sortForm = document.createElement( "form" )
-    sortForm.className = `sort__form sort__form--${typeOfSorting[currentSort].class}`
+    sortForm.className = `sort__form sort__form--${ typeOfSorting[ currentSort ].class }`
     sortItem.appendChild( sortForm )
     
     const sortWrapper = document.createElement( "div" )
@@ -163,6 +163,7 @@ function getSortChoice ( data )
       var choiceValue = document.createElement( "p" )
       choiceValue.className = "choice__value"
       choiceValue.textContent = item
+      choiceValue.tabIndex = 0
       sortChoice.appendChild( choiceValue )
     } )
   }
@@ -179,7 +180,7 @@ function getSortChoice ( data )
   {
     const currentTexte = sortButton.textContent
     const sortItem = sortButton.parentElement
-    function OpenFormSort (  )
+    function setFormSort (  )
     {
       if ( sortItem.classList.contains( "sort__item--close" ) )
       {
@@ -199,10 +200,43 @@ function getSortChoice ( data )
           event.preventDefault()
         }
         const formSort = inputSort.closest( ".sort__form" )
-        formSort.addEventListener("submit", notSubmitForm)
+        formSort.addEventListener( "submit", notSubmitForm )
+        const inputText = document.querySelector(".sort__inputText")
+        inputText.focus()
+
+        function oneFormOpened ()
+        {
+          // création d'un tableau vide
+          const arrayFormOpened = []
+          // récupération des noeuds des formulaire dans le DOM
+          const nodeFormOpened = document.querySelectorAll( ".sort__item--open" )
+
+          // remplissage du tableau avec les noeuds récupérés
+          nodeFormOpened.forEach( item =>
+          {
+            arrayFormOpened.push(item)
+          } )
+
+          arrayFormOpened.forEach( item =>
+          {
+            // récupération du parent de chaque formulaire
+            const parentButton = sortButton.parentNode
+
+            // vérification pour ne pas atteindre le dernier tri ouvert
+            if(item != parentButton)
+            {
+              item.classList.remove( "sort__item--open" )
+              item.classList.add( "sort__item--close" )
+              const form = item.lastChild
+              form.remove()
+            }
+          } )
+        }
+        
+        oneFormOpened()
       }
     }
-    sortButton.addEventListener( "click", OpenFormSort )
+    sortButton.addEventListener( "click", setFormSort )
   } )
 
   const toObserveSort = document.querySelector( ".sort__list" )
@@ -306,8 +340,6 @@ function getSortChoice ( data )
         }
       }
       formButton.addEventListener( "click", closeFormSort )
-
-      // TODO fermer le dropdown ouvert si un autre est ouvert
     } )
   } )
   observer.observe( toObserveSort, { subtree: true, childList: true } )
