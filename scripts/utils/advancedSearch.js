@@ -1,25 +1,23 @@
 var tags = [] 
 var newRecipes = [] 
 var recipesToSort = []
+const recipesList = document.querySelector( ".recipes__list" )
 
-//FIXME recipes === recipesToSort 
-//FIXME (suite) quand on ferme un tag
 function advancedSearch ()
 {
-  console.log("recipes 0 : ", recipes) //! avec les lignes empty après closeTag
+  // console.log("recipes 0 : ", recipes) //*
   newRecipes = ( newRecipesSearch.length > 0 ? newRecipesSearch : recipes )
-  console.log("newRecipes 1 : ", newRecipes)
+  // console.log("newRecipes 1 : ", newRecipes)
   const tagsCards = document.querySelectorAll( ".tag__item" )
+  tags=[]
   tagsCards.forEach( tag =>
   {
     const tagText =  tag.textContent
     tags.push( tagText )
   } )
-  // Suppression des doublons
-  const newSetTags = new Set( tags )
-  const allTags = [ ...newSetTags ]
-
-  if ( allTags.length > 0 )
+  console.log( "tags : ", tags ) //* 
+  recipesList.innerHTML = " "
+  if ( tags.length > 0 )
   {
     function sortRecipes ()
     {
@@ -49,7 +47,7 @@ function advancedSearch ()
         // mise en forme de la string de la recette en minuscules
         const stringRecipeLowerCase = stringRecipe.toLowerCase()
       
-        allTags.forEach( tag =>
+        tags.forEach( tag =>
         {
           const matchTag = stringRecipeLowerCase.includes( tag )
           const recipeId = recipesToSort.indexOf( recipe )
@@ -62,8 +60,6 @@ function advancedSearch ()
         } )
       } )
       
-      const recipesList = document.querySelector( ".recipes__list" )
-      recipesList.innerHTML = " "
       recipesToSort.forEach( recipe =>
       {
         getRecipe(recipe)
@@ -73,17 +69,23 @@ function advancedSearch ()
 
     if ( !search )
     {
-       console.log("recipes 1 : ", recipes) //! avec empty après closeTag
-      recipesToSort = recipes
+      // vidage du tableau
+      recipesToSort = []
+      //remplissage du tableau
+      recipesToSort = recipes.map(recipe => recipe)
     }
     else
     {
-      recipesToSort = newRecipesSearch
+      // vidage du tableau
+      recipesToSort = []
+      //remplissage du tableau
+      recipesToSort = newRecipesSearch.map(recipe => recipe)
     }
     sortRecipes( recipesToSort )
   }
   else
   {
+    console.log("recipes sans tag : ", recipes)
     recipes.forEach( recipe =>
       {
         getRecipe(recipe)

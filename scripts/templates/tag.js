@@ -67,7 +67,7 @@ function getTag (
     {
       currentTag.remove()
       console.log("recipes de closeTag: ", recipes)
-      advancedSearch(recipes)
+      advancedSearch()
     }
     
     tagButton.addEventListener( "click", closeTag )
