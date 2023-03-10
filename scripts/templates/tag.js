@@ -66,7 +66,6 @@ function getTag (
     function closeTag ()
     {
       currentTag.remove()
-      console.log("recipes de closeTag: ", recipes)
       advancedSearch()
     }
     
