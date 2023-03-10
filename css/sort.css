@@ -48,6 +48,11 @@
   color: #FFFFFF;
   text-transform: capitalize;
   font-size: 18px;
+  outline: none;
+}
+
+.sort__button:focus{
+  background-color: rgba(0,0,0,0.2);
 }
 
 .sort__item--close>.sort__button{
@@ -101,6 +106,14 @@ color: rgba(255, 255, 255, 0.5);
 font-size: 18px;
 }
 
+.form__button{
+  outline: none;
+}
+
+.form__button:focus{
+background-color: rgba(0, 0, 0, 0.2);
+}
+
 .sort__choice {
   display: grid;
   grid-auto-columns: max-content;
@@ -117,4 +130,13 @@ font-size: 18px;
   width: max-content;
   text-transform: capitalize;
 }
+
+.choice__value {
+  outline: none;
+}
+
+.choice__value:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 

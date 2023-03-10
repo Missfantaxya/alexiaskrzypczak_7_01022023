@@ -64,6 +64,11 @@
 .search__button{
   height: 100%;
   padding-right: 16.43px;
+  outline: none;
+}
+
+.search__button:focus > img {
+background-color: rgba(0, 0, 0, 0.2);
 }
 
 .search__picture{
