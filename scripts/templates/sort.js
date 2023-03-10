@@ -1,8 +1,5 @@
 function getSortChoice ( data )
 { 
-  // TODO mettre à jour les choiceValue 
-  // TODO suite avec seulement ce qui est dans la recette après tag
-  
   function setIngredients (data)
   {
     // récupérations de tous les ingrédients de toutes les recettes dans un tableau
@@ -158,6 +155,7 @@ function getSortChoice ( data )
     sortChoice.className = `sort__choice sort__choice--${ typeOfSorting[ currentSort ].class }`
     sortChoice.style.gridTemplateRows = `repeat(${ gridRows }, 1fr)`
     sortForm.appendChild( sortChoice )
+
     typeOfSorting[currentSort].items.forEach( item =>
     {
       var choiceValue = document.createElement( "p" )
@@ -180,6 +178,8 @@ function getSortChoice ( data )
   {
     const currentTexte = sortButton.textContent
     const sortItem = sortButton.parentElement
+    // TODO mettre à jour les choiceValue 
+    // TODO suite avec seulement ce qui est dans la recette après tag
     function setFormSort (  )
     {
       if ( sortItem.classList.contains( "sort__item--close" ) )
@@ -188,6 +188,8 @@ function getSortChoice ( data )
         sortItem.classList.add( "sort__item--open" )
         if ( newRecipesSearch.length > 0 )
         {
+          // TODO newRecipesSearch c'est après une recherche
+          // TODO le faire aussi après un tag
           sortTypes[ 0 ].items = setIngredients( newRecipesSearch )
           sortTypes[ 1 ].items = setAppliances( newRecipesSearch )
           sortTypes[2].items = setTools( newRecipesSearch )
@@ -232,7 +234,6 @@ function getSortChoice ( data )
             }
           } )
         }
-        
         oneFormOpened()
       }
     }
