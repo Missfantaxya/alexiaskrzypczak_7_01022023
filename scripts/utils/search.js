@@ -103,19 +103,24 @@ function search ()
   function removeDeleteInputButton ()
   {
     const deleteButton = document.querySelector( ".input__button" )
-    deleteButton.remove()
-    // FIXME erreur console : cannot read property of null (reading 'remove')
-    // https://developer.mozilla.org/fr/docs/Web/API/Element/remove
+    if ( deleteButton )
+    {
+      deleteButton.remove()
+    }
   }
   
   getDeleteInputButton()
 
   const deleteButton = document.querySelector( ".input__button" )
+
+  // supression du bouton si suppression de la recherche
   if ( deleteButton && searchValue.length === 0 )
   {
+    console.log ("if deletButton et pas de recherche")
     removeDeleteInputButton()
   }
-  
+
+  // suppression du bouton au click
   if ( deleteButton )
   {
     deleteButton.addEventListener( "click", eraseInput )
