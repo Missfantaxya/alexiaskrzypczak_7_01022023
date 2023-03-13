@@ -116,7 +116,6 @@ function search ()
   // supression du bouton si suppression de la recherche
   if ( deleteButton && searchValue.length === 0 )
   {
-    console.log ("if deletButton et pas de recherche")
     removeDeleteInputButton()
   }
 
