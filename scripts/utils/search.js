@@ -5,7 +5,7 @@ const searchValue = searchInput.value
 var recipesSearched = []
 let newRecipesSearch = []
 
-// éviter la soumission prévu du formulaire
+// éviter le comportement par défault du formulaire
 function noSubmit ( evt )
 {
   evt.preventDefault()
