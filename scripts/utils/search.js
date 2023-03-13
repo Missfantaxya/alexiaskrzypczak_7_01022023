@@ -1,3 +1,4 @@
+//FIXME la recherche fonctionne dans les 2 sens (tag <=> recherche)
 const searchForm = document.querySelector( ".header__containerSearch" )
 const searchInput = document.querySelector( ".search__input" )
 const searchValue = searchInput.value
@@ -98,11 +99,13 @@ function search ()
   {
     searchForm.reset()
     removeDeleteInputButton()
-    // FIXME retrier les recettes (sans la recherches attention, penser si tags)
     const recipesList = document.querySelector( ".recipes__list" )
-    recipesList.innerHTML = []
-    // TODO voir quel tableau mettre en paramètre
-    getRecipe(recipes) //!
+    recipesList.innerHTML = ""
+    // Affichage de toutes les recettes (sans tenir compte des tags)
+    recipes.forEach( recipes =>
+    {
+      getRecipe(recipes)
+    } )
   }
 
   // fonction de suppression du boutton d'effacemment
