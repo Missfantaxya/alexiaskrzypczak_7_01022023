@@ -98,6 +98,11 @@ function search ()
   {
     searchForm.reset()
     removeDeleteInputButton()
+    // FIXME retrier les recettes (sans la recherches attention, penser si tags)
+    const recipesList = document.querySelector( ".recipes__list" )
+    recipesList.innerHTML = []
+    // TODO voir quel tableau mettre en paramètre
+    getRecipe(recipes) //!
   }
 
   // fonction de suppression du boutton d'effacemment
