@@ -178,7 +178,7 @@ function getSortChoice ( data )
   {
     const currentTexte = sortButton.textContent
     const sortItem = sortButton.parentElement
-    // TODO mettre à jour les choiceValue 
+    // TODO option en plus : mettre à jour les choiceValue 
     // TODO suite avec seulement ce qui est dans la recette après tag
     function setFormSort (  )
     {
