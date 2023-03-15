@@ -1,4 +1,3 @@
-//FIXME màj si tag les option à sélectionner
 function getTag (
   choiceSelected,
   choiceSort)
