@@ -1,7 +1,7 @@
-//FIXME faire fonctionner le tri lors de la supr de la recherche mais avec tag(s)
 const searchForm = document.querySelector( ".header__containerSearch" )
 const searchInput = document.querySelector( ".search__input" )
 const searchValue = searchInput.value
+
 // initialisation du tableau avec toutes les recettes
 const allRecipes = recipes
 // initialisation du tableau vide pour les recettes filtrées
@@ -31,38 +31,61 @@ function search ()
   if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )
   {
     recipesSearched = []
-    //FIXME faire fonctionner la recherche dans le sens tag => recherche
-    console.log( "[tags] dans search() : ", tags ) //* 
-    console.log( "[recipesToSort] dans search() : ", recipesToSort ) //* 
-    console.log( "[newRecipesSearch] dans search() : ", newRecipesSearch ) //*
+
+    // console.log( "[tags] dans search() : ", tags ) //* 
+    // console.log( "[recipesToSort] dans search() : ", recipesToSort ) //* 
+    // console.log( "[newRecipesSearch] dans search() : ", newRecipesSearch ) //*
+    
+    function displayRecipes(data)
+    {
+      for ( const recipe of data )
+      {
+        var recipeSearched = []
+        recipeSearched.push( recipe.name )
+        for ( const ingredient of recipe.ingredients )
+        {
+          recipeSearched.push( ingredient.ingredient )
+        }
+        recipeSearched.push( recipe.description )
+        
+
+        // conversion du tableau en string
+        const stringRecipe = recipeSearched.join( " " )
+
+        //mise en forme en minuscule
+        const stringRecipeLowerCase = stringRecipe.toLowerCase()
+        const searchValueTrimToLowerCase = searchValueTrim.toLowerCase()
+
+        // vérirfication des correspondances dans les données
+        const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
+
+        // remplissage du tableau des recettes filtrées
+        if ( match )
+        {
+          recipesSearched.push( recipe )
+        }
+      }
+    }
 
     // version avec boucle de la fonction de recherche
-    for ( const recipe of allRecipes )
+    if (tags.length === 0)
     {
-      var recipeSearched = []
-      recipeSearched.push( recipe.name )
-      for ( const ingredient of recipe.ingredients )
+      // afficher les recettes filtrées parmis toutes les recettes
+      displayRecipes(allRecipes)
+    }
+    else
+    {
+      let recipesToDisplay = []
+      // retrait des lignes vide dans le tableau des recettes filtrer via les tags
+      recipesToSort.forEach( recipe => 
       {
-        recipeSearched.push( ingredient.ingredient )
-      }
-      recipeSearched.push( recipe.description )
-      
-
-      // conversion du tableau en string
-      const stringRecipe = recipeSearched.join( " " )
-
-      //mise en forme en minuscule
-      const stringRecipeLowerCase = stringRecipe.toLowerCase()
-      const searchValueTrimToLowerCase = searchValueTrim.toLowerCase()
-
-      // vérirfication des correspondances dans les données
-      const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
-
-      // remplissage du tableau des recettes filtrées
-      if ( match )
-      {
-        recipesSearched.push( recipe )
-      }
+        if ( recipe != undefined ) 
+        {
+          recipesToDisplay.push(recipe)
+        }
+      } )
+      // afficher les recettes filtrées parmis les recettes contenant le(s) tag(s)
+      displayRecipes(recipesToDisplay)
     }
 
     // Retrait des doublons du tableau
