@@ -180,40 +180,78 @@ function getSortChoice ()
 
     function setFormSort (  )
     {
-      console.log("[tags] dans setFormSort : ", tags) //*
-      console.log( "[recipesToSort] dans setFormSort() : ", recipesToSort ) //*
-      console.log( "[newRecipesSearch] dans setFormSort() : ", newRecipesSearch ) //*
-    
       if ( sortItem.classList.contains( "sort__item--close" ) )
       {
         sortItem.classList.remove( "sort__item--close" )
         sortItem.classList.add( "sort__item--open" )
 
-        // s'il y a eu une recherche mais pas de recherche avancée
+        // s'il y a eu une recherche mais pas de tag
         if ( newRecipesSearch.length > 0 && tags.length === 0 )
         {
+          // mise à jours des données nécessaires 
           sortTypes[ 0 ].items = setIngredients( newRecipesSearch )
           sortTypes[ 1 ].items = setAppliances( newRecipesSearch )
           sortTypes[2].items = setTools( newRecipesSearch )
         }
-        // s'il y a eu une recherche avancée mais pas de recherche dans la barre
-        // de recherche
+        // s'il y a au moins un tag mais pas de recherche
         else if ( newRecipesSearch.length === 0 && tags.length > 0 )
         {
+          // mise à jours des données nécessaires 
           sortTypes[ 0 ].items = setIngredients( recipesToSort )
           sortTypes[ 1 ].items = setAppliances( recipesToSort )
           sortTypes[2].items = setTools( recipesToSort )
         }
-        //FIXME avec tag ET recherche (quelque soit le sens)
-        // s'il y a eu une recherche et une recherche avancée
-        // else if ( newRecipesSearch.length > 0 && tags.length > 0 )
-        // {
-        //   // TODO newRecipesSearch c'est après une recherche
-        //   // TODO le faire aussi après un tag
-        //   sortTypes[ 0 ].items = setIngredients( recipesToSort )
-        //   sortTypes[ 1 ].items = setAppliances( recipesToSort )
-        //   sortTypes[2].items = setTools( recipesToSort )
-        // }
+        //FIXME actualiser les options avec tag ET recherche (quelque soit le
+        //sens)
+        // s'il y a eu une recherche et une recherche avancée //!
+        else if ( newRecipesSearch.length > 0 && tags.length > 0 )
+        {
+          // création d'un tableau pour les recettes triées par la recherche et
+          // par les tags
+          let mixRecipes = []
+
+          // création d'un tableau pour enlever les doublons de [mixRecipes]
+          let allMixRecipes = []
+
+          //! --------------------------------------------------
+          //! on se retrouve forcément avec le tableau 
+          //! de la première recherche éffectué atg ou search 
+          //! selon le sens car c'est le tableau le plus long
+          
+          // ajout des recettes triées par les tags [mixRecipes]
+          recipesToSort.forEach( recipe =>
+          {
+            mixRecipes.push(recipe)
+          } )
+
+          //ajout des recettes trier par la recherche [mixRecipes]
+          newRecipesSearch.forEach( recipe =>
+          {
+            mixRecipes.push(recipe)
+          } )
+          //! ----------------------------------------------------
+          // FIXME ne mettre dans le tableau que les recettes en commun
+
+          // retrait des doublons de [mixRecipes]
+          const newSetMixRecipes = new Set( mixRecipes )
+          allMixRecipes = [ ...newSetMixRecipes ]
+
+          console.log(" recipesToSort: ",recipesToSort)
+          console.log(" newRecipesSearch: ",newRecipesSearch)
+          console.log(" allMixRecipes: ",allMixRecipes)
+      
+          // mise à jours des données nécessaires 
+          sortTypes[ 0 ].items = setIngredients( allMixRecipes )
+          sortTypes[ 1 ].items = setAppliances( allMixRecipes )
+          sortTypes[2].items = setTools( allMixRecipes )
+        }
+        else
+        {
+          // mise à jours des données nécessaires 
+          sortTypes[ 0 ].items = setIngredients( recipes )
+          sortTypes[ 1 ].items = setAppliances( recipes )
+          sortTypes[2].items = setTools( recipes )
+        }
         
         getSortForm( sortTypes, sortItem, currentTexte )
         formButton = document.querySelector( ".form__button" )
