@@ -1,9 +1,12 @@
-//FIXME la recherche fonctionne dans les 2 sens (tag <=> recherche)
+//FIXME faire fonctionner le tri lors de la supr de la recherche mais avec tag(s)
 const searchForm = document.querySelector( ".header__containerSearch" )
 const searchInput = document.querySelector( ".search__input" )
 const searchValue = searchInput.value
+// initialisation du tableau avec toutes les recettes
+const allRecipes = recipes
+// initialisation du tableau vide pour les recettes filtrées
+let recipesSearched = []
 
-var recipesSearched = []
 let newRecipesSearch = []
 
 // éviter le comportement par défault du formulaire
@@ -28,7 +31,13 @@ function search ()
   if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )
   {
     recipesSearched = []
-    for ( const recipe of recipes )
+    //FIXME faire fonctionner la recherche dans le sens tag => recherche
+    console.log( "[tags] dans search() : ", tags ) //* 
+    console.log( "[recipesToSort] dans search() : ", recipesToSort ) //* 
+    console.log( "[newRecipesSearch] dans search() : ", newRecipesSearch ) //*
+
+    // version avec boucle de la fonction de recherche
+    for ( const recipe of allRecipes )
     {
       var recipeSearched = []
       recipeSearched.push( recipe.name )
@@ -49,7 +58,7 @@ function search ()
       // vérirfication des correspondances dans les données
       const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
 
-      // construction du tableau des recettes filtrées
+      // remplissage du tableau des recettes filtrées
       if ( match )
       {
         recipesSearched.push( recipe )
@@ -61,16 +70,22 @@ function search ()
     newRecipesSearch = [ ...setRecipesSearch ]
   
     const recipesList = document.querySelector( ".recipes__list" )
+
+    // si une recherche est faite
     if ( newRecipesSearch.length > 0 )
     {
+      // vidage du DOM des recettes précedement affichées
       recipesList.innerHTML = " "
+      // affichage des recettes filtrées par la recherche
       newRecipesSearch.forEach( recipe =>
         getRecipe( recipe )
       )
     }
     else
     {
+      // vidage du DOM des recettes précedement affichées
       recipesList.innerHTML = " "
+      // affichage du message d'erreur
       recipesList.innerHTML = "<div class='notFound'> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </div>"
     }
   }
@@ -79,6 +94,7 @@ function search ()
   function getDeleteInputButton ()
   {
     const deleteButton = document.querySelector( ".input__button" )
+    // s'il n'y a pas le bouton
     if ( !deleteButton )
     {
       const deleteInputButton = document.createElement( "button" )
@@ -94,21 +110,33 @@ function search ()
     }
   }
 
-  // fonction d'effacement de l'input
-  function eraseInput ()
+  // fonction de nettoyage du champs de recherche
+  function clearInput ()
   {
     searchForm.reset()
     removeDeleteInputButton()
     const recipesList = document.querySelector( ".recipes__list" )
     recipesList.innerHTML = ""
-    // Affichage de toutes les recettes (sans tenir compte des tags)
-    recipes.forEach( recipes =>
+    // S'il n'y a pas de tag
+    if(tags.length === 0 )
     {
-      getRecipe(recipes)
-    } )
+      // affichage de toutes les recettes
+      allRecipes.forEach( recipe =>
+    {
+      getRecipe(recipe)
+      } )
+    } else
+    {
+      // affichage des recettes filrtées par les tags
+      recipesToSort.forEach( recipe =>
+    {
+      getRecipe(recipe)
+      } )
+    }
+
   }
 
-  // fonction de suppression du boutton d'effacemment
+  // fonction de suppression du boutton de nettoyage
   function removeDeleteInputButton ()
   {
     const deleteButton = document.querySelector( ".input__button" )
@@ -131,7 +159,7 @@ function search ()
   // suppression du bouton au click
   if ( deleteButton )
   {
-    deleteButton.addEventListener( "click", eraseInput )
+    deleteButton.addEventListener( "click", clearInput )
   }
 }
 
