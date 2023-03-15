@@ -31,12 +31,9 @@ function search ()
   if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )
   {
     recipesSearched = []
-
-    // console.log( "[tags] dans search() : ", tags ) //* 
-    // console.log( "[recipesToSort] dans search() : ", recipesToSort ) //* 
-    // console.log( "[newRecipesSearch] dans search() : ", newRecipesSearch ) //*
     
-    function displayRecipes(data)
+    // fonction de tri des recettes avec une boucle
+    function sortingRecipes(data)
     {
       for ( const recipe of data )
       {
@@ -71,7 +68,7 @@ function search ()
     if (tags.length === 0)
     {
       // afficher les recettes filtrées parmis toutes les recettes
-      displayRecipes(allRecipes)
+      sortingRecipes(allRecipes)
     }
     else
     {
@@ -85,7 +82,7 @@ function search ()
         }
       } )
       // afficher les recettes filtrées parmis les recettes contenant le(s) tag(s)
-      displayRecipes(recipesToDisplay)
+      sortingRecipes(recipesToDisplay)
     }
 
     // Retrait des doublons du tableau
