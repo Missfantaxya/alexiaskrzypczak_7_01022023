@@ -1,15 +1,10 @@
 var tags = [] 
-var newRecipes = [] 
 var recipesToSort = []
 const recipesList = document.querySelector( ".recipes__list" )
-
-//FIXME actualiser les éléments disponibles dans la recherches avancée après
-//sinon suprrimer aussi les tags
 
 //selection de tag
 function advancedSearch ()
 {
-  newRecipes = ( newRecipesSearch.length > 0 ? newRecipesSearch : recipes )
   const tagsCards = document.querySelectorAll( ".tag__item" )
   tags=[]
   tagsCards.forEach( tag =>
@@ -19,6 +14,7 @@ function advancedSearch ()
   } )
   
   recipesList.innerHTML = " "
+
   if ( tags.length > 0 )
   {
     function sortRecipes ()
@@ -87,9 +83,7 @@ function advancedSearch ()
   }
   else
   {
-    recipes.forEach( recipe =>
-      {
-        getRecipe(recipe)
-      } )
+    // lancer la fonction de recherche
+    search()
   }
 }
