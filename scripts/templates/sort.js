@@ -202,27 +202,31 @@ function getSortChoice ()
           sortTypes[ 1 ].items = setAppliances( recipesToSort )
           sortTypes[2].items = setTools( recipesToSort )
         }
-        //FIXME actualiser les options avec tag ET recherche (quelque soit le
-        //sens)
-        // s'il y a eu une recherche et une recherche avancée //!
+       
+        // s'il y a eu une recherche et une recherche avancée
         else if ( newRecipesSearch.length > 0 && tags.length > 0 )
         {
           // création d'un tableau 
           // pour les recettes triées par la recherche et par les tags
           let mixRecipes = []
+          let recipesByTag = []
+          recipesToSort.forEach( recipe =>
+          {
+            if ( recipe != undefined )
+            {
+              recipesByTag.push(recipe)
+            }
+          } )
+          // Booleén pour savoir si le tag a été la dernière recherche
+          const tagLast = recipesByTag.length < newRecipesSearch.length
 
-
-        
-
-
-
-          console.log(" recipesToSort: ",recipesToSort)
-          console.log(" newRecipesSearch: ",newRecipesSearch)
+          // remplissage du tableau des données selon ordre de recherche
+          mixRecipes = tagLast ? recipesByTag : newRecipesSearch
       
-        //   // mise à jours des données nécessaires 
-        //   sortTypes[ 0 ].items = setIngredients( allMixRecipes )
-        //   sortTypes[ 1 ].items = setAppliances( allMixRecipes )
-        //   sortTypes[2].items = setTools( allMixRecipes )
+          // mise à jours des données nécessaires 
+          sortTypes[ 0 ].items = setIngredients( mixRecipes )
+          sortTypes[ 1 ].items = setAppliances( mixRecipes )
+          sortTypes[2].items = setTools( mixRecipes )
         }
         else
         {
