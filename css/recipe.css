@@ -73,12 +73,9 @@
 
 .recipe__process{
   width: 171px;
-  height: 70px;
+  height: 75px;
   font-family: 'Roboto', sans-serif;
   line-height: 100%;
-  overflow: hidden;
-  /* FIXME */
-  text-overflow: ellipsis; /*! FIXME  */ 
 }
 
 

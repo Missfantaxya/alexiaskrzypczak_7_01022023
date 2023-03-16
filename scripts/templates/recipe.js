@@ -91,5 +91,14 @@ function getRecipe( data )
   const recipeProcess = document.createElement( "p" )
   recipeProcess.className = "recipe__process"
   recipeProcess.textContent = description
-  recipeDetailsContainer.appendChild(recipeProcess)
+  recipeDetailsContainer.appendChild( recipeProcess )
+
+  // ajout de l'ellipse au texte si nécessaire
+  let processArray = recipeProcess.innerHTML.split(" ")
+  while ( recipeProcess.scrollHeight > recipeProcess.offsetHeight )
+  {
+    processArray.pop()
+    let newTextProcess = processArray.join( " " )
+    recipeProcess.innerHTML = `${newTextProcess}...`
+  }
 }
