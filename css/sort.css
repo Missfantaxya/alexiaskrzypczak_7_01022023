@@ -83,7 +83,6 @@
   margin-right: 20px;
 }
 
-/* FIXME c'est une solution non accessible cf A11y wai-aria */
 .sort__label{
   display :none;
 }
