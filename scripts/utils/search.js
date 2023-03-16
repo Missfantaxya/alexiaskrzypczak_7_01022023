@@ -31,20 +31,19 @@ function search ()
   if ( searchValueTrim.length > 2 || searchValueTrim.length === 0 )
   {
     recipesSearched = []
-    
-    // fonction de tri des recettes avec une boucle
+
+    // fonction de tri des recettes en programmation fonctionnelle
     function sortingRecipes(data)
     {
-      for ( const recipe of data )
+      data.forEach(recipe =>
       {
         var recipeSearched = []
         recipeSearched.push( recipe.name )
-        for ( const ingredient of recipe.ingredients )
+        recipe.ingredients.forEach(ingredient =>
         {
           recipeSearched.push( ingredient.ingredient )
-        }
+        })
         recipeSearched.push( recipe.description )
-        
 
         // conversion du tableau en string
         const stringRecipe = recipeSearched.join( " " )
@@ -61,7 +60,7 @@ function search ()
         {
           recipesSearched.push( recipe )
         }
-      }
+      })
     }
 
     // version avec boucle de la fonction de recherche
