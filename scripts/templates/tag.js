@@ -67,6 +67,7 @@ function getTag (
     {
       currentTag.remove()
       advancedSearch()
+      getSortChoice()
     }
     
     tagButton.addEventListener( "click", closeTag )

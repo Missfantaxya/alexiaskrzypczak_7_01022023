@@ -135,6 +135,7 @@ function search ()
   {
     searchForm.reset()
     removeDeleteInputButton()
+    newRecipesSearch = []
     const recipesList = document.querySelector( ".recipes__list" )
     recipesList.innerHTML = ""
     // S'il n'y a pas de tag
@@ -148,12 +149,8 @@ function search ()
     } else
     {
       // affichage des recettes filrtées par les tags
-      recipesToSort.forEach( recipe =>
-    {
-      getRecipe(recipe)
-      } )
+      advancedSearch()
     }
-
   }
 
   // fonction de suppression du boutton de nettoyage
@@ -174,6 +171,12 @@ function search ()
   if ( deleteButton && searchValue.length === 0 )
   {
     removeDeleteInputButton()
+    newRecipesSearch = [] 
+    if ( tags.length > 0 )
+    {
+      advancedSearch()
+    }
+    
   }
 
   // suppression du bouton au click

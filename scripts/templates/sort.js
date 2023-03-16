@@ -85,6 +85,7 @@ function getSortChoice ()
 
   // construction du DOM ----------------
   const sortList = document.querySelector( ".sort__list" )
+  sortList.innerHTML = " "
 
   function getSortDropdown ( typeOfSorting ) 
   {
@@ -206,44 +207,22 @@ function getSortChoice ()
         // s'il y a eu une recherche et une recherche avancée //!
         else if ( newRecipesSearch.length > 0 && tags.length > 0 )
         {
-          // création d'un tableau pour les recettes triées par la recherche et
-          // par les tags
+          // création d'un tableau 
+          // pour les recettes triées par la recherche et par les tags
           let mixRecipes = []
 
-          // création d'un tableau pour enlever les doublons de [mixRecipes]
-          let allMixRecipes = []
 
-          //! --------------------------------------------------
-          //! on se retrouve forcément avec le tableau 
-          //! de la première recherche éffectué atg ou search 
-          //! selon le sens car c'est le tableau le plus long
-          
-          // ajout des recettes triées par les tags [mixRecipes]
-          recipesToSort.forEach( recipe =>
-          {
-            mixRecipes.push(recipe)
-          } )
+        
 
-          //ajout des recettes trier par la recherche [mixRecipes]
-          newRecipesSearch.forEach( recipe =>
-          {
-            mixRecipes.push(recipe)
-          } )
-          //! ----------------------------------------------------
-          // FIXME ne mettre dans le tableau que les recettes en commun
 
-          // retrait des doublons de [mixRecipes]
-          const newSetMixRecipes = new Set( mixRecipes )
-          allMixRecipes = [ ...newSetMixRecipes ]
 
           console.log(" recipesToSort: ",recipesToSort)
           console.log(" newRecipesSearch: ",newRecipesSearch)
-          console.log(" allMixRecipes: ",allMixRecipes)
       
-          // mise à jours des données nécessaires 
-          sortTypes[ 0 ].items = setIngredients( allMixRecipes )
-          sortTypes[ 1 ].items = setAppliances( allMixRecipes )
-          sortTypes[2].items = setTools( allMixRecipes )
+        //   // mise à jours des données nécessaires 
+        //   sortTypes[ 0 ].items = setIngredients( allMixRecipes )
+        //   sortTypes[ 1 ].items = setAppliances( allMixRecipes )
+        //   sortTypes[2].items = setTools( allMixRecipes )
         }
         else
         {
@@ -366,21 +345,28 @@ function getSortChoice ()
       {
         const choiceSelected = choice.textContent 
         const sortItem = choice.closest( ".sort__item" )
-        const sortChoiceButton = sortItem.firstChild
-        const sortChoice = sortChoiceButton.textContent
-        getTag(
+        if ( sortItem )
+        {
+          const sortChoiceButton = sortItem.firstChild
+          const sortChoice = sortChoiceButton.textContent
+          getTag(
           choiceSelected,
           sortChoice )
+        }
+        
       }
       choice.addEventListener( "click", selectChoice )
 
       function closeForm ()
       {
         const sortItem = formButton.closest( '.sort__item' )
-        sortItem.classList.remove( "sort__item--open" )
-        sortItem.classList.add( "sort__item--close" )
-        const sortForm = choice.closest( ".sort__form" )
-        sortForm.remove()
+        if ( sortItem )
+        {
+          sortItem.classList.remove( "sort__item--open" )
+          sortItem.classList.add( "sort__item--close" )
+          const sortForm = choice.closest( ".sort__form" )
+          sortForm.remove()
+        }
       }
       choice.addEventListener( "click", closeForm )
     } )
