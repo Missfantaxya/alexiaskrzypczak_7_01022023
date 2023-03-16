@@ -63,7 +63,7 @@ function search ()
       })
     }
 
-    // version avec boucle de la fonction de recherche
+    // si une recherche avancée a été faite
     if (tags.length === 0)
     {
       // afficher les recettes filtrées parmis toutes les recettes
