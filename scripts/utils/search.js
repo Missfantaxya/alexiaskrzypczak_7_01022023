@@ -18,8 +18,9 @@ function noSubmit ( evt )
 // fonction de tri des recettes
 function search ()
 {
+  // TODO //?
   // recupération de la recherche entrée
-  const searchValue = searchInput.value
+  const searchValue = searchInput.value //? nécéssaire de la déclarer dans la fonction si elle est déjà déclarer avant ?
 
   // Mise en forme en minuscules
   const searchValueLowerCase = searchValue.toLowerCase()
@@ -50,7 +51,6 @@ function search ()
 
         //mise en forme en minuscule
         const stringRecipeLowerCase = stringRecipe.toLowerCase()
-        const searchValueTrimToLowerCase = searchValueTrim.toLowerCase()
 
         // vérirfication des correspondances dans les données
         const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
