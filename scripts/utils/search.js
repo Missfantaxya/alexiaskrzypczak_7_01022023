@@ -3,6 +3,7 @@ const searchInput = document.querySelector( ".search__input" )
 
 // initialisation du tableau avec toutes les recettes
 const allRecipes = recipes
+
 // initialisation du tableau vide pour les recettes filtrées
 let recipesSearched = []
 
