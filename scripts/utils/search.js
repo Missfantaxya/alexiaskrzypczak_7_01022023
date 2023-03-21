@@ -51,10 +51,9 @@ function search ()
 
         //mise en forme en minuscule
         const stringRecipeLowerCase = stringRecipe.toLowerCase()
-        const searchValueTrimToLowerCase = searchValueTrim.toLowerCase()
 
         // vérirfication des correspondances dans les données
-        const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
+        const match = stringRecipeLowerCase.includes( searchValueTrim )
 
         // remplissage du tableau des recettes filtrées
         if ( match )
