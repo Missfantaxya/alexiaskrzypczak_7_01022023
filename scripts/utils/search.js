@@ -1,6 +1,5 @@
 const searchForm = document.querySelector( ".header__containerSearch" )
 const searchInput = document.querySelector( ".search__input" )
-// const searchValue = searchInput.value
 
 // initialisation du tableau avec toutes les recettes
 const allRecipes = recipes
