@@ -1,12 +1,12 @@
 const searchForm = document.querySelector( ".header__containerSearch" )
 const searchInput = document.querySelector( ".search__input" )
-const searchValue = searchInput.value
 
 // initialisation du tableau avec toutes les recettes
 const allRecipes = recipes
 // initialisation du tableau vide pour les recettes filtrées
 let recipesSearched = []
 
+//initialisation d'un tableau vide pour le retrait des doublons
 let newRecipesSearch = []
 
 // éviter le comportement par défault du formulaire
@@ -18,9 +18,8 @@ function noSubmit ( evt )
 // fonction de tri des recettes
 function search ()
 {
-   // TODO //?
   // recupération de la recherche entrée
-  const searchValue = searchInput.value //? nécéssaire de la déclarer dans la fonction si elle est déjà déclarer avant ?
+  const searchValue = searchInput.value 
 
   // Mise en forme en minuscules
   const searchValueLowerCase = searchValue.toLowerCase()
