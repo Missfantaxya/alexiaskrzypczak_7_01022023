@@ -1,6 +1,6 @@
 const searchForm = document.querySelector( ".header__containerSearch" )
 const searchInput = document.querySelector( ".search__input" )
-const searchValue = searchInput.value
+// const searchValue = searchInput.value
 
 // initialisation du tableau avec toutes les recettes
 const allRecipes = recipes
@@ -18,9 +18,8 @@ function noSubmit ( evt )
 // fonction de tri des recettes
 function search ()
 {
-  // TODO //?
   // recupération de la recherche entrée
-  const searchValue = searchInput.value //? nécéssaire de la déclarer dans la fonction si elle est déjà déclarer avant ?
+  const searchValue = searchInput.value
 
   // Mise en forme en minuscules
   const searchValueLowerCase = searchValue.toLowerCase()
@@ -53,7 +52,7 @@ function search ()
         const stringRecipeLowerCase = stringRecipe.toLowerCase()
 
         // vérirfication des correspondances dans les données
-        const match = stringRecipeLowerCase.includes( searchValueTrimToLowerCase )
+        const match = stringRecipeLowerCase.includes( searchValueTrim )
 
         // remplissage du tableau des recettes filtrées
         if ( match )
