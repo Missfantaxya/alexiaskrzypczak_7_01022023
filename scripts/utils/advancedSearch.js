@@ -47,7 +47,10 @@ function advancedSearch ()
       
         tags.forEach( tag =>
         {
+          // Booléen indicant si le tag est inclus dans la recette
           const matchTag = stringRecipeLowerCase.includes( tag )
+
+          // récupération de l'index de la recette 
           const recipeId = recipesToSort.indexOf( recipe )
           
           if ( !matchTag )
