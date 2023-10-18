@@ -51,17 +51,17 @@ function getSortChoice ( data )
   function getSortDropdown ( typeOfSorting ) 
   {
     const sortItem = document.createElement( "li" )
-    sortItem.className = `sort__item sort__item--close sort__item--${typeOfSorting.class}`
+    sortItem.className = `{sort__item sort__item--close sort__item--${typeOfSorting.class}}`
     sortList.appendChild( sortItem )
     
     const sortButton = document.createElement( "button" )
-    sortButton.className = `sort__button sort__button--${typeOfSorting.class}`
+    sortButton.className = `{sort__button sort__button--${typeOfSorting.class}}`
     sortButton.type = "button"
     sortButton.textContent = typeOfSorting.type
     sortItem.appendChild( sortButton )
     
     const sortArrow = document.createElement( "img" )
-    sortArrow.className = `{sort__arrow sort__arrow--${typeOfSorting.class}`
+    sortArrow.className = `{sort__arrow sort__arrow--${typeOfSorting.class}}`
     sortArrow.src = "../../assets/arrow-down.svg"
     sortArrow.alt = "arrow"
     sortButton.appendChild( sortArrow )
@@ -73,39 +73,37 @@ function getSortChoice ( data )
     const currentSort = typeOfSorting.findIndex( sorType )
     
     const sortForm = document.createElement( "form" )
-    sortForm.className = `sort__form sort__form--${typeOfSorting[currentSort].class}`
+    sortForm.className = `{sort__form sort__form--${typeOfSorting[currentSort].class}`
     sortItem.appendChild( sortForm )
     
     const sortWrapper = document.createElement( "div" )
-    sortWrapper.className = `sort__wrapper sort__wrapper--${typeOfSorting[currentSort].class}`
-    sortForm.appendChild( sortWrapper
-    )
+    sortWrapper.className = `{sort__wrapper sort__wrapper--${typeOfSorting[currentSort].class}`
+    sortForm.appendChild( sortWrapper )
 
     const sortField = document.createElement( "fieldset" )
-    sortField.className = `sort__field sort__field--${typeOfSorting[currentSort].class}`
+    sortField.className = `{sort__field sort__field--${typeOfSorting[currentSort].class}`
     sortWrapper.appendChild( sortField )
     
     const sortLabel = document.createElement( "label" )
     sortLabel.className = "sort__label"
-    sortLabel.setAttribute( "for", `sort__inputText--${typeOfSorting[currentSort].class}` )
+    sortLabel.setAttribute( "for", `{sort__inputText--${typeOfSorting[currentSort].class}` )
     sortField.appendChild( sortLabel )
 
     const sortInputText = document.createElement( "input" )
-    sortInputText.id = `sort__inputText--${typeOfSorting[currentSort].class}`
-    sortInputText.className = `sort__inputText sort__inputText--${typeOfSorting[currentSort].class}`
-    sortInputText.name = `sort__inputText--${typeOfSorting[currentSort].class}`
+    sortInputText.id = `{sort__inputText--${typeOfSorting[currentSort].class}`
+    sortInputText.className = `{sort__inputText sort__inputText--${typeOfSorting[currentSort].class}`
+    sortInputText.name = `{sort__inputText--${typeOfSorting[currentSort].class}`
     sortInputText.type = "text"
-    sortInputText.placeholder = `Rechercher un ${typeOfSorting[currentSort].placeholder}`
-    sortField.appendChild( sortInputText
-    )
+    sortInputText.placeholder = `{Rechercher un ${typeOfSorting[currentSort].placeholder}`
+    sortField.appendChild( sortInputText )
 
     const formButton = document.createElement( "button" )
-    formButton.className = `form__button form__button--${typeOfSorting[currentSort].class}`
+    formButton.className = `{form__button form__button--${typeOfSorting[currentSort].class}`
     formButton.type = "button"
     sortWrapper.appendChild( formButton )
     
     const formArrow = document.createElement( "img" )
-    formArrow.className = `sort__arrow sort__arrow--up sort__arrow${typeOfSorting[currentSort].class}`
+    formArrow.className = `{sort__arrow sort__arrow--up sort__arrow${typeOfSorting[currentSort].class}`
     formArrow.src = "../../assets/arrow-down.svg"
     formArrow.alt = "arrow"
     formButton.appendChild( formArrow )
@@ -113,7 +111,7 @@ function getSortChoice ( data )
     const itemsLength = typeOfSorting[ currentSort ].items.length
     const gridRows =  itemsLength > 10  ? 10 : itemsLength
     const sortChoice = document.createElement( "div" )
-    sortChoice.className = `sort__choice sort__choice--${ typeOfSorting[ currentSort ].class }`
+    sortChoice.className = `{sort__choice sort__choice--${ typeOfSorting[ currentSort ].class }`
     sortChoice.style.gridTemplateRows = `repeat(${ gridRows }, 1fr)`
     sortForm.appendChild( sortChoice )
     typeOfSorting[currentSort].items.forEach( item =>
@@ -181,10 +179,7 @@ function getSortChoice ( data )
       const newItems = []
       currentItems.forEach( item =>
       {
-        //FIXME
         if ( item.includes( inputValue ) )
-        //! sensible à la casse
-        //! attention pour "cocohdus" montrera "coco"
         {
           newItems.push(item)
         }
@@ -198,7 +193,7 @@ function getSortChoice ( data )
         sortChoice.remove()
         const newSortChoice = document.createElement("div")
         const gridRows =  newItemsLength > 10  ? 10 : newItemsLength
-        newSortChoice.className = `sort__choice sort__choice--${ sortTypes[ currentSort ].class }`
+        newSortChoice.className = `{sort__choice sort__choice--${ sortTypes[ currentSort ].class }`
         newSortChoice.style.gridTemplateRows = `repeat(${ gridRows }, 1fr)`
         sortForm.appendChild( newSortChoice )
         newItems.forEach( item =>
