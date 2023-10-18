@@ -21,18 +21,18 @@ function getTag (
 
   // tagTypes.forEach(tagType => {
     const tagList = document.createElement( "ul" )
-    tagList.className = `tag__list tag__list--${ choiceClass }`
+    tagList.className = `{tag__list tag__list--${ choiceClass }}`
     headerContainerTag.appendChild( tagList )
 
     // tagType.items.forEach( item =>
     // {
       const tagItem = document.createElement( "li" )
-      tagItem.className = `tag__item tag__item--${ choiceClass }`
+      tagItem.className = `{tag__item tag__item--${ choiceClass }}`
       tagItem.textContent = choiceSelected
       tagList.appendChild( tagItem )
       
       const tagButton = document.createElement( "button" )
-      tagButton.className = `tag__button tag__button--${ choiceClass }`
+      tagButton.className = `{tag__button tag__button--${ choiceClass }}`
       tagButton.type = "button"
       tagItem.appendChild( tagButton )
       
