@@ -100,7 +100,7 @@ function getSortChoice ()
     sortItem.appendChild( sortButton )
     
     const sortArrow = document.createElement( "img" )
-    sortArrow.className = `{sort__arrow sort__arrow--${typeOfSorting.class}`
+    sortArrow.className = `sort__arrow sort__arrow--${typeOfSorting.class}`
     sortArrow.src = "../../assets/arrow-down.svg"
     sortArrow.alt = "arrow"
     sortButton.appendChild( sortArrow )
