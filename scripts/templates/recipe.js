@@ -30,7 +30,7 @@ function getRecipe( data )
   
   const recipeClock = document.createElement( "img" )
   recipeClock.className = "recipe__clock"
-  recipeClock.src = "../../../assets/clock.svg"
+  recipeClock.src = "assets/clock.svg"
   recipeClock.alt = "clock"
   recipeTime.appendChild( recipeClock )
   
